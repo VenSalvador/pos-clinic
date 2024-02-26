@@ -1,0 +1,61 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LoginMaster.Master.cs" Inherits="POSActiv8.LoginMaster" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#008975"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"/>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Page-Enter" content="Alpha(opacity=100)"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <meta http-equiv="Page-Enter" content="blendTrans(Duration=0)"/>
+    <meta http-equiv="Page-Exit" content="blendTrans(Duration=0)"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <title></title>
+
+    <%-- Favicon --%>
+    <link rel="icon" href="Images/activ8logo.png" type="image/gif" sizes="16x16" />
+
+    <%-- CSS --%>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <script src="assets/js/kit.fontawesome.js"></script>
+    <script src="assets/js/loading-animation.js"></script>
+    <script src="assets/js/sweetalert.js"></script>
+    <script src="assets/js/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        javascript: window.history.forward(1500);
+    </script>
+
+</head>
+
+<body style="background-color:#ffffff"> <%--style="background-position: center top; background-repeat: repeat-x; background-image: url(images/background2.gif);"--%> <%--background-color:#1B3135;--%>
+    <form id="form1" runat="server">
+
+        <!-- Page Content -->
+        <main>
+            <div class="container">
+
+                <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="1800"></asp:ScriptManager>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            
+            </div>
+        </main>
+
+    </form>
+</body>
+</html>

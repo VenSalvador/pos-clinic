@@ -1,0 +1,6 @@
+D:\rctan\Projects\POSActiv8\BusinessObject\bin\Release\BusinessObject.dll
+D:\rctan\Projects\POSActiv8\BusinessObject\bin\Release\BusinessObject.pdb
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Release\BusinessObject.csproj.AssemblyReference.cache
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Release\BusinessObject.csproj.CoreCompileInputs.cache
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Release\BusinessObject.dll
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Release\BusinessObject.pdb

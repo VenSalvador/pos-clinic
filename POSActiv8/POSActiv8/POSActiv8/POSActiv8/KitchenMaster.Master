@@ -1,0 +1,192 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="KitchenMaster.Master.cs" Inherits="POSActiv8.KitchenMaster" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <%-- Favicon --%>
+    <link rel="icon" href="Images/activ8logo.png" type="image/gif" sizes="16x16" />
+
+    <%-- CSS --%>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        /* Fixed table header on scroll */
+        .fixhead-table 
+        {
+            overflow-y: auto;
+            height: 300px;
+        }
+
+        .fixhead-table table
+         {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .fixhead-table th 
+        {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table th
+        {
+            padding:10px;
+            font-size:15px;
+            background-color:#f8f9f9;
+            font-weight:bold;
+            color:#333333;
+        }
+
+        .table tr:nth-child(odd) 
+        {
+            background-color: #fafafa;
+        }
+
+        /* Scroll To Top Button */
+        #btnScrollTop
+        {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #444444; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 14px; /* Increase font size */
+        }
+
+        #btnScrollTop:hover
+        {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+
+        #webcam {
+            width: 420px;
+            height: 340px;
+        }
+
+    </style>
+
+    <%-- SweetAlert --%>
+    <script src="assets/js/sweetalert.js"></script>
+    <script src="assets/js/sweetalert.min.js"></script>
+
+    <%-- Scroll to Top --%>
+    <script type="text/javascript">
+        // When the user scrolls down 20px from the top of the document, show the  back button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById("btnScrollTop").style.display = "block";
+            }
+
+            else {
+                document.getElementById("btnScrollTop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+</head>
+
+<body style="background-color:#f6f9ff;">
+
+    <form runat="server">
+        
+        <%-- Page Header --%>
+        <header id="header" class="header fixed-top d-flex align-items-center">
+
+            <div class="col-md-3">
+
+                <div class="d-flex align-items-center justify-content-between">
+                  <a href="#" class="logo d-flex align-items-center">
+                      <img src="Images/activ8-black.jpg" width="42" />
+                    <span class="d-none d-lg-block">Kitchen Activ8</span>
+                  </a>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="text-end">
+                    <label id="lblTransactionDate" runat="server"></label>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="text-end">
+                    <asp:LinkButton ID="lnkLogout" runat="server" CssClass="btn" OnClick="lnkLogout_Click">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </asp:LinkButton>
+                </div>
+
+            </div>
+
+            <div class="col-md-1">
+            </div>
+
+        </header>
+        
+        <main>
+            <div class="container-fluid">
+                <!-- Page Content -->
+                <asp:ScriptManager ID="ScriptManager" runat="server" />
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                <button id="btnScrollTop" title="Go to top" onclick="topFunction()" >Back to Top</button>
+            </div>
+
+        </main>
+
+    <%-- Scripts --%>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.min.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Disabled Right Click -->
+    <%--<script type="text/javascript">
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>--%>
+
+    <!-- Disabled Back Button -->
+    <script type="text/javascript">
+        javascript: window.history.forward(1500);
+    </script>
+
+    </form>
+
+</body>
+</html>

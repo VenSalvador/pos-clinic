@@ -1,0 +1,312 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="POSMaster.Master.cs" Inherits="POSActiv8.POSMaster" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <%-- Favicon --%>
+    <link rel="icon" href="Images/activ8logo.png" type="image/gif" sizes="16x16" />
+
+    <%-- CSS --%>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        /*.qty .count
+        {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 13px;
+            line-height: 20px;
+            padding: 0 2px;
+            min-width: 35px;
+            text-align: center;
+        }
+        .qty .plus
+        {
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: top;
+            color: white;
+            width: 20px;
+            height: 20px;
+            font: 20px/1 Arial,sans-serif;
+            color:#333;
+            text-align: center;
+            border-radius: 10%;
+        }
+        .qty .minus
+        {
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: top;
+            color: white;
+            width: 20px;
+            height: 20px;
+            font: 20px/1 Arial,sans-serif;
+            color:#333;
+            text-align: center;
+            border-radius: 10%;
+            background-clip: padding-box;
+        }
+        .minus:hover{
+            background-color: #717fe0 !important;
+        }
+        .plus:hover{
+            background-color: #717fe0 !important;
+        }*/
+        /*Prevent text selection*/
+        /*span{
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        input{  
+            border: 0;
+            width: 2%;
+        }
+        nput::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input:disabled{
+            background-color:white;
+        }*/
+         
+
+        /* Fixed table header on scroll */
+        .fixhead-table 
+        {
+            overflow-y: auto;
+            height: 300px;
+        }
+
+        .fixhead-table table
+         {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .fixhead-table th 
+        {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table th
+        {
+            padding:10px;
+            font-size:15px;
+            background-color:#f8f9f9;
+            font-weight:bold;
+            color:#333333;
+        }
+
+        .table tr:nth-child(odd) 
+        {
+            background-color: #fafafa;
+        }
+
+        /* Scroll To Top Button */
+        #btnScrollTop
+        {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #444444; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 14px; /* Increase font size */
+        }
+
+        #btnScrollTop:hover
+        {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+
+        #webcam {
+            width: 420px;
+            height: 340px;
+        }
+
+    </style>
+
+
+    <%-- SweetAlert --%>
+    <script src="assets/js/sweetalert.js"></script>
+    <script src="assets/js/sweetalert.min.js"></script>
+
+    <%-- Scroll to Top --%>
+    <script type="text/javascript">
+        // When the user scrolls down 20px from the top of the document, show the  back button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById("btnScrollTop").style.display = "block";
+            }
+
+            else {
+                document.getElementById("btnScrollTop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+</head>
+
+<body style="background-color:#f6f9ff;">
+
+    <form runat="server">
+        
+        <%-- Page Header --%>
+        <header id="header" class="header fixed-top d-flex align-items-center">
+
+            <div class="col-md-3">
+
+                <div class="d-flex align-items-center justify-content-between">
+                  <div href="#" class="logo d-flex align-items-center">
+                      <img src="Images/activ8-black.jpg" width="42" />
+                    <span class="d-none d-lg-block">POS Activ8</span>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="text-end">
+                    <label id="lblTransactionDate" runat="server"></label>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="text-end">
+
+                    <%--<asp:LinkButton ID="lnkLogout" runat="server" CssClass="btn" OnClick="lnkLogout_Click">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </asp:LinkButton>--%>
+
+                    <asp:Button ID="btnPOSSession" runat="server" CssClass="btn btn-success" OnClick="btnPOSSession_Click" ToolTip="Click here to start/end your POS session"/>
+
+                </div>
+            </div>
+
+        </header>
+        
+        <main>
+            <div class="container-fluid">
+                <!-- Page Content -->
+                <asp:ScriptManager ID="ScriptManager" runat="server"/>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                <button id="btnScrollTop" title="Go to top" onclick="topFunction()" >Back to Top</button>
+            </div>
+
+            <!--POS Session-->
+            <div id="modalPOSSession" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    
+                  <!-- Modal content-->
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <asp:Label ID="lblPOSSessionTitle" runat="server"></asp:Label>
+                        </h5>
+                        <asp:HiddenField ID="hfSessionCode" runat="server" />
+                        <asp:HiddenField ID="hfIPAddress" runat="server" />
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <asp:HiddenField ID="hfControlNumber" runat="server" />
+
+                        Transaction Date
+                        <br />
+                        <input type="date" id="txtTransactionDate" runat="server" class="form-control" tabindex="1"/>
+                        <br />
+
+                        Opening Amount <i><small>(Starting cash drawer)</small></i>
+                        <br />
+                        <asp:TextBox ID="txtOpeningAmount" runat="server" CssClass="form-control text-end" TabIndex="2"></asp:TextBox>
+                        <br />
+
+                        <div id="divClosing" runat="server">
+                            Closing Amount <i><small>(Ending cash drawer)</small></i>
+                            <br />
+                            <asp:TextBox ID="txtClosingAmount" runat="server" CssClass="form-control text-end" TabIndex="3"></asp:TextBox>
+                            <br />
+                        </div>
+
+                        Remarks
+                        <br />
+                        <textarea id="txtRemarks" runat="server" class="form-control" tabindex="3" rows="3" maxlength="200" placeholder="Input your remarks here"></textarea>
+                        <br />
+                
+                    </div>
+
+                    <div class="modal-footer" style="justify-content: space-between;">
+                        <label ID="lblValidationMessage" runat="server"></label>
+                    </div>
+
+                    <div class="modal-footer">
+                        <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-default" data-bs-dismiss="modal" Text="Cancel"/>
+                        <asp:Button ID="btnPost" runat="server" CssClass="btn btn-primary" OnClick="btnPost_Click"/>
+                    </div>
+
+                  </div>
+      
+                </div>
+            </div>
+
+            <%--Show Modal--%>
+            <script type="text/javascript">
+                function showPOSSession() {
+                    var myModal = new bootstrap.Modal(document.getElementById('modalPOSSession'), { keyboard: false });
+                    myModal.show();
+                }
+            </script>
+
+
+        </main>
+
+    <%-- Scripts --%>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.min.js"></script>
+
+    <!-- Disabled Right Click -->
+    <%--<script type="text/javascript">
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>--%>
+
+    <!-- Disabled Back Button -->
+    <script type="text/javascript">
+        javascript: window.history.forward(1500);
+    </script>
+
+    </form>
+
+</body>
+</html>

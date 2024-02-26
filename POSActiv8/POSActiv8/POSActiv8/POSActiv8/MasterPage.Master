@@ -1,0 +1,366 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="POSActiv8.MasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <%-- Favicon --%>
+    <link rel="icon" href="Images/activ8logo.png" type="image/gif" sizes="16x16" />
+
+    <%-- CSS --%>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+
+        /*Vehicle Photo Upload*/
+        .container 
+        {
+          position: relative;
+          width: 100%;
+        }
+
+        .image 
+        {
+          opacity: 1;
+          display: block;
+          width: 100%;
+          height: auto;
+          transition: .5s ease;
+          backface-visibility: hidden;
+        }
+
+        .middle 
+        {
+          transition: .5s ease;
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          text-align: center;
+        }
+
+        .container:hover .image
+        {
+          opacity: 0.3;
+        }
+
+        .container:hover .middle
+        {
+          opacity: 1;
+        }
+
+        .text
+        {
+          background-color: #04AA6D;
+          color: white;
+          font-size: 16px;
+          padding: 16px 32px;
+        }
+
+        /* Fixed table header on scroll */
+
+        .fixhead-table 
+        {
+            overflow-y: auto;
+            height: 370px;
+        }
+
+        .fixhead-table table
+         {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .fixhead-table th 
+        {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        /* Table */
+
+        .table th
+        {
+            padding:10px;
+            font-size:15px;
+            background-color:#f8f9f9;
+            font-weight:bold;
+            color:#333333;
+            border-right:1px solid #e6e6e6;
+            border-bottom:1px solid #e6e6e6;
+            padding:10px;
+            font-size:13px;
+            background-color:#ecf0f1; /*#d3ddf7*/
+            font-weight:bold;
+            color:#333333;
+        }
+
+        .table tr:nth-child(odd) 
+        {
+            background-color: #fafafa;
+        }
+         
+        .table td
+        {
+            border-right:1px solid #e6e6e6;
+            border-bottom:1px solid #e6e6e6;
+            padding:10px;
+            font-size:14px;
+            width:auto;
+        }
+
+        /* Scroll To Top Button */
+        #btnScrollTop
+        {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #444444; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 14px; /* Increase font size */
+        }
+
+        #btnScrollTop:hover
+        {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+
+    </style>
+
+    <%-- SweetAlert --%>
+    <script type="text/javascript" src="assets/js/sweetalert.js"></script>
+    <script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+
+    <%-- Scroll to Top --%>
+    <script type="text/javascript">
+        // When the user scrolls down 20px from the top of the document, show the  back button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById("btnScrollTop").style.display = "block";
+            }
+
+            else {
+                document.getElementById("btnScrollTop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+        <%-- Page Header --%>
+        <header id="header" class="header fixed-top d-flex align-items-center">
+
+            <div class="d-flex align-items-center justify-content-between">
+              <div href="#" class="logo d-flex align-items-center">
+                <%--<img src="Images/activ8logo.png" width="42" />--%>
+                  <img src="Images/activ8-black.jpg" width="42" />
+                <span class="d-none d-lg-block">POS Activ8</span>
+              </div>
+              <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div>
+            
+        </header>
+
+        <!-- Side Navigation -->   
+        <aside id="sidebar" class="sidebar">
+
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <asp:LinkButton ID="lnkDashboard" runat="server" CssClass="nav-link collapsed" OnClick="lnkDashboard_Click">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Dashboard</span>
+                    </asp:LinkButton>
+                </li>
+
+                <%--Configurations--%>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#configurations-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-tools"></i><span>Configurations</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="configurations-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                        <li>
+                            <asp:LinkButton ID="lnkFloorLocation" runat="server" CssClass="nav-link collapsed" OnClick="lnkFloorLocation_Click">
+                                <i class="bi bi-circle"></i><span>Floor Location</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkTableNames" runat="server" CssClass="nav-link collapsed" OnClick="lnkTableNames_Click">
+                                <i class="bi bi-circle"></i><span>Table Names</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkItemCategory" runat="server" CssClass="nav-link collapsed" OnClick="lnkItemCategory_Click">
+                                <i class="bi bi-circle"></i><span>Item Category</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkItemSubCategory" runat="server" CssClass="nav-link collapsed" OnClick="lnkItemSubCategory_Click">
+                                <i class="bi bi-circle"></i><span>Item SubCategory</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkItemMaster" runat="server" CssClass="nav-link collapsed" OnClick="lnkItemMaster_Click">
+                                <i class="bi bi-circle"></i><span>Item Master</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkDiscounts" runat="server" CssClass="nav-link collapsed" OnClick="lnkDiscounts_Click">
+                                <i class="bi bi-circle"></i><span>Discounts</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkTax" runat="server" CssClass="nav-link collapsed" OnClick="lnkTax_Click">
+                                <i class="bi bi-circle"></i><span>Tax</span>
+                            </asp:LinkButton>
+                        </li>
+
+                    </ul>
+                </li>
+             
+                <%--Reports--%>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#reports-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-clipboard-data-fill"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="reports-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+
+                        <li>
+                            <asp:LinkButton ID="lnkXReport" runat="server" CssClass="nav-link collapsed" OnClick="lnkXReport_Click">
+                                <i class="bi bi-circle"></i><span>X Report</span>
+                            </asp:LinkButton>
+                        </li>
+
+                        <li>
+                            <asp:LinkButton ID="lnkZReport" runat="server" CssClass="nav-link collapsed" OnClick="lnkZReport_Click">
+                                <i class="bi bi-circle"></i><span>Z Report</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lbtnSalesInvoice" runat="server" CssClass="nav-link collapsed" OnClick="lbtnSalesInvoice_Click">
+                                <i class="bi bi-circle"></i><span>Sales Invoice</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lbtnVoidItems" runat="server" CssClass="nav-link collapsed" OnClick="lbtnVoidItems_Click">
+                                <i class="bi bi-circle"></i><span>Void Items</span>
+                            </asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lbtnCancelledOrders" runat="server" CssClass="nav-link collapsed" OnClick="lbtnCancelledOrders_Click">
+                                <i class="bi bi-circle"></i><span>Cancelled Orders</span>
+                            </asp:LinkButton>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+                <%--Logout--%>
+
+                <li class="nav-item">
+                    <asp:LinkButton ID="lnkLogout" runat="server" CssClass="nav-link collapsed" OnClick="lnkLogout_Click">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </asp:LinkButton>
+                </li>
+
+              <%--<li id="liSettings" runat="server" class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#settings-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-gear"></i><span>Settings</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="settings-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <asp:LinkButton ID="lnkUserProfiles" runat="server" CssClass="nav-link collapsed" OnClick="lnkUserProfiles_Click">
+                      <i class="bi bi-circle"></i><span>User Profiles</span>
+                    </asp:LinkButton>
+                  </li>
+                  <li>
+                    <asp:LinkButton ID="lnkUserMatrix" runat="server" CssClass="nav-link collapsed">
+                      <i class="bi bi-circle"></i><span>User Matrix</span>
+                    </asp:LinkButton>
+                  </li>
+                  <li>
+                    <asp:LinkButton ID="lnkSystemLogs" runat="server" CssClass="nav-link collapsed" OnClick="lnkSystemLogs_Click">
+                      <i class="bi bi-circle"></i><span>System Logs</span>
+                    </asp:LinkButton>
+                  </li>
+                  <li>
+                    <asp:LinkButton ID="lnkErrorLogs" runat="server" CssClass="nav-link collapsed" OnClick="lnkErrorLogs_Click">
+                      <i class="bi bi-circle"></i><span>Error Logs</span>
+                    </asp:LinkButton>
+                  </li>
+                </ul>
+              </li>--%>
+
+              
+
+            </ul>
+
+        </aside>
+           
+        <!-- Page Content -->
+        <main id="main" class="main">
+
+            <div>
+                <!-- Page Content -->
+                <asp:ScriptManager ID="ScriptManager" runat="server"/>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                <button id="btnScrollTop" title="Go to top" onclick="topFunction()" >Back to Top</button>
+            </div>
+
+        </main>
+
+    <%-- Scripts --%>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Disabled Right Click -->
+    <%--<script type="text/javascript">
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>--%>
+
+    <!-- Disabled Back Button -->
+    <script type="text/javascript">
+        javascript: window.history.forward(1500);
+    </script>
+
+          
+    </form>
+</body>
+</html>

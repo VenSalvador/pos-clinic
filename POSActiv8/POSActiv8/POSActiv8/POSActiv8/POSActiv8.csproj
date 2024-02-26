@@ -1,0 +1,757 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{52B3877E-83D5-4B8D-8D99-D7FFF4FFF53D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POSActiv8</RootNamespace>
+    <AssemblyName>POSActiv8</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44367</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=6.0.8.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.6.0.8\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.6.0.0\lib\net452\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.6.0.0\lib\net452\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\MasterDesign.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\apple-touch-icon.png" />
+    <Content Include="assets\img\card.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\messages-1.jpg" />
+    <Content Include="assets\img\messages-2.jpg" />
+    <Content Include="assets\img\messages-3.jpg" />
+    <Content Include="assets\img\news-1.jpg" />
+    <Content Include="assets\img\news-2.jpg" />
+    <Content Include="assets\img\news-3.jpg" />
+    <Content Include="assets\img\news-4.jpg" />
+    <Content Include="assets\img\news-5.jpg" />
+    <Content Include="assets\img\not-found.svg" />
+    <Content Include="assets\img\product-1.jpg" />
+    <Content Include="assets\img\product-2.jpg" />
+    <Content Include="assets\img\product-3.jpg" />
+    <Content Include="assets\img\product-4.jpg" />
+    <Content Include="assets\img\product-5.jpg" />
+    <Content Include="assets\img\profile-img.jpg" />
+    <Content Include="assets\img\slides-1.jpg" />
+    <Content Include="assets\img\slides-2.jpg" />
+    <Content Include="assets\img\slides-3.jpg" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\sweetalert.js" />
+    <Content Include="assets\js\sweetalert.min.js" />
+    <Content Include="assets\scss\Readme.txt" />
+    <Content Include="assets\vendor\apexcharts\apexcharts.min.js" />
+    <Content Include="assets\vendor\bootstrap-icons\bootstrap-icons.css" />
+    <Content Include="assets\vendor\bootstrap-icons\index.html" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.rtl.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.rtl.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.rtl.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.rtl.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.rtl.min.css" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.esm.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.esm.min.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\vendor\boxicons\css\animations.css" />
+    <Content Include="assets\vendor\boxicons\css\boxicons.css" />
+    <Content Include="assets\vendor\boxicons\css\boxicons.min.css" />
+    <Content Include="assets\vendor\boxicons\css\transformations.css" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.svg" />
+    <Content Include="assets\vendor\chart.js\chart.esm.js" />
+    <Content Include="assets\vendor\chart.js\chart.js" />
+    <Content Include="assets\vendor\chart.js\chart.min.js" />
+    <Content Include="assets\vendor\chart.js\chunks\helpers.segment.js" />
+    <Content Include="assets\vendor\chart.js\helpers.esm.js" />
+    <Content Include="assets\vendor\echarts\echarts.min.js" />
+    <Content Include="assets\vendor\echarts\extension\bmap.js" />
+    <Content Include="assets\vendor\echarts\extension\bmap.min.js" />
+    <Content Include="assets\vendor\echarts\extension\dataTool.js" />
+    <Content Include="assets\vendor\echarts\extension\dataTool.min.js" />
+    <Content Include="assets\vendor\php-email-form\validate.js" />
+    <Content Include="assets\vendor\quill\quill.bubble.css" />
+    <Content Include="assets\vendor\quill\quill.core.css" />
+    <Content Include="assets\vendor\quill\quill.core.js" />
+    <Content Include="assets\vendor\quill\quill.js" />
+    <Content Include="assets\vendor\quill\quill.min.js" />
+    <Content Include="assets\vendor\quill\quill.snow.css" />
+    <Content Include="assets\vendor\remixicon\remixicon.css" />
+    <Content Include="assets\vendor\remixicon\remixicon.svg" />
+    <Content Include="assets\vendor\remixicon\remixicon.symbol.svg" />
+    <Content Include="assets\vendor\simple-datatables\simple-datatables.js" />
+    <Content Include="assets\vendor\simple-datatables\style.css" />
+    <Content Include="assets\vendor\tinymce\icons\default\icons.js" />
+    <Content Include="assets\vendor\tinymce\icons\default\icons.min.js" />
+    <Content Include="assets\vendor\tinymce\icons\default\index.js" />
+    <Content Include="assets\vendor\tinymce\license.txt" />
+    <Content Include="assets\vendor\tinymce\models\dom\index.js" />
+    <Content Include="assets\vendor\tinymce\models\dom\model.js" />
+    <Content Include="assets\vendor\tinymce\models\dom\model.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\advlist\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\anchor\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autolink\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autoresize\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autosave\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\charmap\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\codesample\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\code\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\code\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\directionality\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\js\emojiimages.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\js\emojiimages.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\js\emojis.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\fullscreen\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\help\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\help\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\image\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\image\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\importcss\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\insertdatetime\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\link\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\link\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\lists\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\lists\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\media\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\media\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\nonbreaking\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\pagebreak\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\preview\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\preview\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\quickbars\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\quickbars\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\quickbars\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\save\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\save\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\searchreplace\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\table\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\table\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\template\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\template\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualblocks\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualchars\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\wordcount\index.js" />
+    <Content Include="assets\vendor\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="assets\vendor\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\skins\content\dark\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\dark\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\default\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\default\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\document\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\document\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\tinymce-5-dark\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\tinymce-5-dark\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\tinymce-5\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\tinymce-5\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\writer\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\content\writer\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\content.inline.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\content.inline.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\skin.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\skin.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\skin.shadowdom.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide-dark\skin.shadowdom.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\content.inline.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\content.inline.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\skin.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\skin.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\skin.shadowdom.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\oxide\skin.shadowdom.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\content.inline.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\content.inline.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\skin.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\skin.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\content.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\content.inline.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\content.inline.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\skin.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\skin.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\skin.shadowdom.css" />
+    <Content Include="assets\vendor\tinymce\skins\ui\tinymce-5\skin.shadowdom.min.css" />
+    <Content Include="assets\vendor\tinymce\themes\silver\index.js" />
+    <Content Include="assets\vendor\tinymce\themes\silver\theme.js" />
+    <Content Include="assets\vendor\tinymce\themes\silver\theme.min.js" />
+    <Content Include="assets\vendor\tinymce\tinymce.js" />
+    <Content Include="assets\vendor\tinymce\tinymce.min.js" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="CancelledOrders.aspx" />
+    <Content Include="GameXRegistration.aspx" />
+    <Content Include="GameXRegLogin.aspx" />
+    <Content Include="Tax.aspx" />
+    <Content Include="Discounts.aspx" />
+    <Content Include="GameXRegistration1.aspx" />
+    <Content Include="VoidItems.aspx" />
+    <Content Include="XZReport.aspx" />
+    <Content Include="KitchenOrders.aspx" />
+    <Content Include="SalesInvoice.aspx" />
+    <Content Include="TableNames.aspx" />
+    <Content Include="FloorLocation.aspx" />
+    <Content Include="RegisterShift.aspx" />
+    <Content Include="ItemSubCategory.aspx" />
+    <Content Include="ItemCategory.aspx" />
+    <Content Include="ItemMaster.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="ErrorLogs.aspx" />
+    <Content Include="Images\activ8-black.jpg" />
+    <Content Include="Images\active-black.png" />
+    <Content Include="Images\active-white.png" />
+    <Content Include="POS.aspx" />
+    <Content Include="HomePage.aspx" />
+    <Content Include="Images\11x11progress.gif" />
+    <Content Include="Images\activ8logo.png" />
+    <Content Include="Images\background2.gif" />
+    <Content Include="Images\badge_multiply.png" />
+    <Content Include="Images\Calendar_Icon.png" />
+    <Content Include="Images\checked-checkbox.png" />
+    <Content Include="Images\fourdots.gif" />
+    <Content Include="Images\gLcTBTu.gif" />
+    <Content Include="Images\homepagecover.png" />
+    <Content Include="Images\images.png" />
+    <Content Include="Images\loader.gif" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\loading_blue.gif" />
+    <Content Include="Images\loading_image.gif" />
+    <Content Include="Images\materialpreloader.gif" />
+    <Content Include="Images\nsjbi.jpg" />
+    <Content Include="Images\nsjbilogo.png" />
+    <Content Include="Images\pendulum.gif" />
+    <Content Include="Images\petron.ico" />
+    <Content Include="Images\petron.jpg" />
+    <Content Include="Images\photo.jpg" />
+    <Content Include="Images\Please Wait - Loading Pie.gif" />
+    <Content Include="Images\programming.gif" />
+    <Content Include="Images\provalue_logo.jfif" />
+    <Content Include="Images\user-profile.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="SessionTimeout.aspx" />
+    <Content Include="SystemLogs.aspx" />
+    <Content Include="UserProfiles.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\baseclass.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CancelledOrders.aspx.cs">
+      <DependentUpon>CancelledOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CancelledOrders.aspx.designer.cs">
+      <DependentUpon>CancelledOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GameXRegistration.aspx.cs">
+      <DependentUpon>GameXRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameXRegistration.aspx.designer.cs">
+      <DependentUpon>GameXRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GameXRegLogin.aspx.cs">
+      <DependentUpon>GameXRegLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameXRegLogin.aspx.designer.cs">
+      <DependentUpon>GameXRegLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GameXRegistrationMaster.Master.cs">
+      <DependentUpon>GameXRegistrationMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameXRegistrationMaster.Master.designer.cs">
+      <DependentUpon>GameXRegistrationMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Tax.aspx.cs">
+      <DependentUpon>Tax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tax.aspx.designer.cs">
+      <DependentUpon>Tax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Discounts.aspx.cs">
+      <DependentUpon>Discounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Discounts.aspx.designer.cs">
+      <DependentUpon>Discounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GameXRegistration1.aspx.cs">
+      <DependentUpon>GameXRegistration1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameXRegistration1.aspx.designer.cs">
+      <DependentUpon>GameXRegistration1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VoidItems.aspx.cs">
+      <DependentUpon>VoidItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VoidItems.aspx.designer.cs">
+      <DependentUpon>VoidItems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XZReport.aspx.cs">
+      <DependentUpon>XZReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XZReport.aspx.designer.cs">
+      <DependentUpon>XZReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KitchenOrders.aspx.cs">
+      <DependentUpon>KitchenOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KitchenOrders.aspx.designer.cs">
+      <DependentUpon>KitchenOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KitchenMaster.Master.cs">
+      <DependentUpon>KitchenMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KitchenMaster.Master.designer.cs">
+      <DependentUpon>KitchenMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SalesInvoice.aspx.cs">
+      <DependentUpon>SalesInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesInvoice.aspx.designer.cs">
+      <DependentUpon>SalesInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TableNames.aspx.cs">
+      <DependentUpon>TableNames.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TableNames.aspx.designer.cs">
+      <DependentUpon>TableNames.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FloorLocation.aspx.cs">
+      <DependentUpon>FloorLocation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FloorLocation.aspx.designer.cs">
+      <DependentUpon>FloorLocation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterShift.aspx.cs">
+      <DependentUpon>RegisterShift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterShift.aspx.designer.cs">
+      <DependentUpon>RegisterShift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSubCategory.aspx.cs">
+      <DependentUpon>ItemSubCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemSubCategory.aspx.designer.cs">
+      <DependentUpon>ItemSubCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCategory.aspx.cs">
+      <DependentUpon>ItemCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemCategory.aspx.designer.cs">
+      <DependentUpon>ItemCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ItemMaster.aspx.cs">
+      <DependentUpon>ItemMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemMaster.aspx.designer.cs">
+      <DependentUpon>ItemMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="POS.aspx.cs">
+      <DependentUpon>POS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="POS.aspx.designer.cs">
+      <DependentUpon>POS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="POSMaster.Master.cs">
+      <DependentUpon>POSMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="POSMaster.Master.designer.cs">
+      <DependentUpon>POSMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLogs.aspx.cs">
+      <DependentUpon>ErrorLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorLogs.aspx.designer.cs">
+      <DependentUpon>ErrorLogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginMaster.Master.cs">
+      <DependentUpon>LoginMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginMaster.Master.designer.cs">
+      <DependentUpon>LoginMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.Master.cs">
+      <DependentUpon>MainPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage.Master.designer.cs">
+      <DependentUpon>MainPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionTimeout.aspx.cs">
+      <DependentUpon>SessionTimeout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SessionTimeout.aspx.designer.cs">
+      <DependentUpon>SessionTimeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLogs.aspx.cs">
+      <DependentUpon>SystemLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemLogs.aspx.designer.cs">
+      <DependentUpon>SystemLogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfiles.aspx.cs">
+      <DependentUpon>UserProfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfiles.aspx.designer.cs">
+      <DependentUpon>UserProfiles.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LoginMaster.Master" />
+    <Content Include="MainPage.Master" />
+    <Content Include="MasterPage.Master" />
+    <Content Include="assets\vendor\apexcharts\locales\ar.json" />
+    <Content Include="assets\vendor\apexcharts\locales\ca.json" />
+    <Content Include="assets\vendor\apexcharts\locales\cs.json" />
+    <Content Include="assets\vendor\apexcharts\locales\de.json" />
+    <Content Include="assets\vendor\apexcharts\locales\el.json" />
+    <Content Include="assets\vendor\apexcharts\locales\en.json" />
+    <Content Include="assets\vendor\apexcharts\locales\es.json" />
+    <Content Include="assets\vendor\apexcharts\locales\et.json" />
+    <Content Include="assets\vendor\apexcharts\locales\fa.json" />
+    <Content Include="assets\vendor\apexcharts\locales\fi.json" />
+    <Content Include="assets\vendor\apexcharts\locales\fr.json" />
+    <Content Include="assets\vendor\apexcharts\locales\he.json" />
+    <Content Include="assets\vendor\apexcharts\locales\hi.json" />
+    <Content Include="assets\vendor\apexcharts\locales\hr.json" />
+    <Content Include="assets\vendor\apexcharts\locales\hu.json" />
+    <Content Include="assets\vendor\apexcharts\locales\hy.json" />
+    <Content Include="assets\vendor\apexcharts\locales\id.json" />
+    <Content Include="assets\vendor\apexcharts\locales\it.json" />
+    <Content Include="assets\vendor\apexcharts\locales\ja.json" />
+    <Content Include="assets\vendor\apexcharts\locales\ka.json" />
+    <Content Include="assets\vendor\apexcharts\locales\ko.json" />
+    <Content Include="assets\vendor\apexcharts\locales\lt.json" />
+    <Content Include="assets\vendor\apexcharts\locales\lv.json" />
+    <Content Include="assets\vendor\apexcharts\locales\nb.json" />
+    <Content Include="assets\vendor\apexcharts\locales\nl.json" />
+    <Content Include="assets\vendor\apexcharts\locales\pl.json" />
+    <Content Include="assets\vendor\apexcharts\locales\pt-br.json" />
+    <Content Include="assets\vendor\apexcharts\locales\pt.json" />
+    <Content Include="assets\vendor\apexcharts\locales\rs.json" />
+    <Content Include="assets\vendor\apexcharts\locales\ru.json" />
+    <Content Include="assets\vendor\apexcharts\locales\se.json" />
+    <Content Include="assets\vendor\apexcharts\locales\sk.json" />
+    <Content Include="assets\vendor\apexcharts\locales\sl.json" />
+    <Content Include="assets\vendor\apexcharts\locales\sq.json" />
+    <Content Include="assets\vendor\apexcharts\locales\th.json" />
+    <Content Include="assets\vendor\apexcharts\locales\tr.json" />
+    <Content Include="assets\vendor\apexcharts\locales\ua.json" />
+    <Content Include="assets\vendor\apexcharts\locales\zh-cn.json" />
+    <Content Include="assets\vendor\apexcharts\locales\zh-tw.json" />
+    <Content Include="assets\vendor\bootstrap-icons\bootstrap-icons.json" />
+    <Content Include="assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff" />
+    <Content Include="assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.rtl.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.rtl.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.esm.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.esm.min.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="assets\vendor\echarts\extension\bmap.js.map" />
+    <Content Include="assets\vendor\echarts\extension\dataTool.js.map" />
+    <Content Include="assets\vendor\quill\quill.min.js.map" />
+    <Content Include="assets\vendor\remixicon\remixicon.eot" />
+    <Content Include="assets\vendor\remixicon\remixicon.less" />
+    <Content Include="assets\vendor\remixicon\remixicon.ttf" />
+    <Content Include="assets\vendor\remixicon\remixicon.woff" />
+    <Content Include="assets\vendor\remixicon\remixicon.woff2" />
+    <Content Include="assets\vendor\tinymce\bower.json" />
+    <Content Include="assets\vendor\tinymce\CHANGELOG.md" />
+    <Content Include="assets\vendor\tinymce\composer.json" />
+    <Content Include="assets\vendor\tinymce\package.json" />
+    <Content Include="assets\vendor\tinymce\README.md" />
+    <Content Include="POSMaster.Master" />
+    <None Include="packages.config" />
+    <Content Include="KitchenMaster.Master" />
+    <Content Include="GameXRegistrationMaster.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{d5408916-7634-4f01-8e8f-99e27039890c}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessObject\BusinessObject.csproj">
+      <Project>{f0849a8a-002e-499a-8fb8-5adc51c3f2c4}</Project>
+      <Name>BusinessObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{5e1d7d0c-9e05-4c5a-9327-08c5e5a8b556}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="assets\vendor\tinymce\tinymce.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReportsGenerated\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52938</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44367/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

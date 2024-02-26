@@ -1,0 +1,11 @@
+D:\rctan\Projects\POSActiv8\BusinessLogic\bin\Release\BusinessLogic.dll
+D:\rctan\Projects\POSActiv8\BusinessLogic\bin\Release\BusinessLogic.pdb
+D:\rctan\Projects\POSActiv8\BusinessLogic\bin\Release\BusinessObject.dll
+D:\rctan\Projects\POSActiv8\BusinessLogic\bin\Release\DataAccess.dll
+D:\rctan\Projects\POSActiv8\BusinessLogic\bin\Release\BusinessObject.pdb
+D:\rctan\Projects\POSActiv8\BusinessLogic\bin\Release\DataAccess.pdb
+D:\rctan\Projects\POSActiv8\BusinessLogic\obj\Release\BusinessLogic.csproj.AssemblyReference.cache
+D:\rctan\Projects\POSActiv8\BusinessLogic\obj\Release\BusinessLogic.csproj.CoreCompileInputs.cache
+D:\rctan\Projects\POSActiv8\BusinessLogic\obj\Release\BusinessLogic.csproj.CopyComplete
+D:\rctan\Projects\POSActiv8\BusinessLogic\obj\Release\BusinessLogic.dll
+D:\rctan\Projects\POSActiv8\BusinessLogic\obj\Release\BusinessLogic.pdb

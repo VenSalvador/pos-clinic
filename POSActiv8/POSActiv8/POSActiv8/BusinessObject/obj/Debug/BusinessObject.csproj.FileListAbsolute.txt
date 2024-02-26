@@ -1,0 +1,12 @@
+D:\rctan\Projects\POSActiv8\BusinessObject\bin\Debug\BusinessObject.dll
+D:\rctan\Projects\POSActiv8\BusinessObject\bin\Debug\BusinessObject.pdb
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Debug\BusinessObject.csproj.AssemblyReference.cache
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Debug\BusinessObject.csproj.CoreCompileInputs.cache
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Debug\BusinessObject.dll
+D:\rctan\Projects\POSActiv8\BusinessObject\obj\Debug\BusinessObject.pdb
+C:\Users\user\Downloads\POSActiv8\POSActiv8\POSActiv8\BusinessObject\bin\Debug\BusinessObject.dll
+C:\Users\user\Downloads\POSActiv8\POSActiv8\POSActiv8\BusinessObject\bin\Debug\BusinessObject.pdb
+C:\Users\user\Downloads\POSActiv8\POSActiv8\POSActiv8\BusinessObject\obj\Debug\BusinessObject.csproj.AssemblyReference.cache
+C:\Users\user\Downloads\POSActiv8\POSActiv8\POSActiv8\BusinessObject\obj\Debug\BusinessObject.csproj.CoreCompileInputs.cache
+C:\Users\user\Downloads\POSActiv8\POSActiv8\POSActiv8\BusinessObject\obj\Debug\BusinessObject.dll
+C:\Users\user\Downloads\POSActiv8\POSActiv8\POSActiv8\BusinessObject\obj\Debug\BusinessObject.pdb

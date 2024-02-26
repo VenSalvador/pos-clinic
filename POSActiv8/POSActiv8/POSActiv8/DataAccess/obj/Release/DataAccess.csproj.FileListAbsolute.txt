@@ -1,0 +1,9 @@
+D:\rctan\Projects\POSActiv8\DataAccess\bin\Release\DataAccess.dll
+D:\rctan\Projects\POSActiv8\DataAccess\bin\Release\DataAccess.pdb
+D:\rctan\Projects\POSActiv8\DataAccess\bin\Release\BusinessObject.dll
+D:\rctan\Projects\POSActiv8\DataAccess\bin\Release\BusinessObject.pdb
+D:\rctan\Projects\POSActiv8\DataAccess\obj\Release\DataAccess.csproj.AssemblyReference.cache
+D:\rctan\Projects\POSActiv8\DataAccess\obj\Release\DataAccess.csproj.CoreCompileInputs.cache
+D:\rctan\Projects\POSActiv8\DataAccess\obj\Release\DataAccess.csproj.CopyComplete
+D:\rctan\Projects\POSActiv8\DataAccess\obj\Release\DataAccess.dll
+D:\rctan\Projects\POSActiv8\DataAccess\obj\Release\DataAccess.pdb
