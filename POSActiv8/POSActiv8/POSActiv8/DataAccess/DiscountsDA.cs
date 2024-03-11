@@ -35,6 +35,7 @@ namespace DataAccess
         //Post
         public string Discounts_Post(DiscountsBO discBO, string strUserID)
         {
+
             SqlParameter[] myparams = new SqlParameter[]
             {
                 new SqlParameter("@intRecordID", discBO.recordid),

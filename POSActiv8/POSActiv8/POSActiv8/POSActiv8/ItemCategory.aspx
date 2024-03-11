@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Item Category" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ItemCategory.aspx.cs" Inherits="POSActiv8.ItemCategory" %>
+﻿<%@  Page Title="Item Category" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ItemCategory.aspx.cs" Inherits="POSActiv8.ItemCategory" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <div id="divErrorMessage" runat="server" class="pagetitle">
@@ -18,7 +18,7 @@
 <div id="divPageTitle" runat="server" class="pagetitle">
 
     <h1>Item Category</h1>
-
+     
 </div>
 
 <div id="divButtonControls" runat="server" class="section">
@@ -49,7 +49,7 @@
         <asp:GridView ID="gvItemCateogry" runat="server" CssClass="table table-bordered table-hover align-middle" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" EmptyDataText="No records to display" EmptyDataRowStyle-HorizontalAlign="center" ShowHeader="true" ShowFooter="false" GridLines="None" onrowcommand="gvItemCategory_RowCommand">
         <Columns>
 
-            <asp:TemplateField HeaderText="">
+        <asp:TemplateField HeaderText="">
                 <HeaderStyle />
                 <ItemTemplate>
                     <medium>
