@@ -1,10 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +15,14 @@ namespace DataAccess
     public class POSSessionsDA
     {
         //View
-        public SqlDataReader POS_Sessions_View(string strSessionCode, string strSearchQuery)
+        public MySqlDataReader POS_Sessions_View(string strSessionCode, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strSessionCode", strSessionCode),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@strSessionCode", strSessionCode),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_Sessions_View", CommandType.StoredProcedure, myparams);
@@ -35,16 +37,16 @@ namespace DataAccess
         //Post
         public string POS_Sessions_Post(POSSessionsBO possessBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strSessionCode", possessBO.sessioncode),
-                new SqlParameter("@intSessionStatus", possessBO.sessionstatus),
-                new SqlParameter("@strTerminalName", possessBO.terminalname),
-                new SqlParameter("@dteTransactionDate", possessBO.transactiondate),
-                new SqlParameter("@decOpeningAmount", possessBO.openingamount),
-                new SqlParameter("@decClosingAmount", possessBO.closingamount),
-                new SqlParameter("@strRemarks", possessBO.remarks),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strSessionCode", possessBO.sessioncode),
+                new MySqlParameter("@intSessionStatus", possessBO.sessionstatus),
+                new MySqlParameter("@strTerminalName", possessBO.terminalname),
+                new MySqlParameter("@dteTransactionDate", possessBO.transactiondate),
+                new MySqlParameter("@decOpeningAmount", possessBO.openingamount),
+                new MySqlParameter("@decClosingAmount", possessBO.closingamount),
+                new MySqlParameter("@strRemarks", possessBO.remarks),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

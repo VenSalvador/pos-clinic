@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class KitchenOrdersDA
     {
         //View
-        public SqlDataReader POS_KitchenOrders_View(string strControlNumber, DateTime dteTransactionDate)
+        public MySqlDataReader POS_KitchenOrders_View(string strControlNumber, DateTime dteTransactionDate)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strControlNumber", strControlNumber),
-                    new SqlParameter("@dteTransactionDate", dteTransactionDate)
+                    new MySqlParameter("@strControlNumber", strControlNumber),
+                    new MySqlParameter("@dteTransactionDate", dteTransactionDate)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_KitchenOrders_View", CommandType.StoredProcedure, myparams);
@@ -35,10 +36,10 @@ namespace DataAccess
         //Post
         public string POS_KitchenOrders_Post(KitchenOrdersBO kitchenordersBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", kitchenordersBO.controlnumber),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", kitchenordersBO.controlnumber),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

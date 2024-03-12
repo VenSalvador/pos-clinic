@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class UserProfilesDA
     {
         //View
-        public SqlDataReader UserProfiles_View(string strUserID, string strSearchQuery)
+        public MySqlDataReader UserProfiles_View(string strUserID, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strUserID", strUserID),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@strUserID", strUserID),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("UserProfiles_View", CommandType.StoredProcedure, myparams);
@@ -35,18 +36,18 @@ namespace DataAccess
         //Post
         public string UserProfiles_Post(UserProfilesBO upBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@intRecordID", upBO.recordid),
-                new SqlParameter("@strUserID", upBO.networkid),
-                new SqlParameter("@strFullName", upBO.fullname),
-                new SqlParameter("@strEmailAddress", upBO.emailaddress),
-                new SqlParameter("@strUserDepartment", upBO.department),
-                new SqlParameter("@intUserLevel", upBO.userlevel),
-                new SqlParameter("@intUserRole", upBO.userrole),
-                new SqlParameter("@intUserStatus", upBO.userstatus),
-                new SqlParameter("@intLoginStatus", upBO.loginstatus),
-                new SqlParameter("@strPostedBy", strUserID)
+                new MySqlParameter("@intRecordID", upBO.recordid),
+                new MySqlParameter("@strUserID", upBO.networkid),
+                new MySqlParameter("@strFullName", upBO.fullname),
+                new MySqlParameter("@strEmailAddress", upBO.emailaddress),
+                new MySqlParameter("@strUserDepartment", upBO.department),
+                new MySqlParameter("@intUserLevel", upBO.userlevel),
+                new MySqlParameter("@intUserRole", upBO.userrole),
+                new MySqlParameter("@intUserStatus", upBO.userstatus),
+                new MySqlParameter("@intLoginStatus", upBO.loginstatus),
+                new MySqlParameter("@strPostedBy", strUserID)
             };
 
             try

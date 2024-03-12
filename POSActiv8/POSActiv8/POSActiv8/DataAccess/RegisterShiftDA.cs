@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class RegisterShiftDA
     {
         //View
-        public SqlDataReader RegisterShift_View(string strControlNumber, string strSearchQuery)
+        public MySqlDataReader RegisterShift_View(string strControlNumber, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strControlNumber", strControlNumber),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@strControlNumber", strControlNumber),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("RegisterShift_View", CommandType.StoredProcedure, myparams);
@@ -32,14 +33,14 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate)
+        public MySqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intTransactionType", intTransactionType),
-                    new SqlParameter("@dteTransactionDate", dteTransactionDate)
+                    new MySqlParameter("@intTransactionType", intTransactionType),
+                    new MySqlParameter("@dteTransactionDate", dteTransactionDate)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_XZReport_View", CommandType.StoredProcedure, myparams);
@@ -54,15 +55,15 @@ namespace DataAccess
         //Post
         public string RegisterShift_Post(RegisterShiftBO regshiftBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", regshiftBO.controlnumber),
-                new SqlParameter("@intTransactionType", regshiftBO.transactiontype),
-                new SqlParameter("@decOpeningAmount", regshiftBO.openingamount),
-                new SqlParameter("@decClosingAmount", regshiftBO.closingamount),
-                new SqlParameter("@strRemarks", regshiftBO.remarks),
-                new SqlParameter("@intTransactionStatus", regshiftBO.transactionstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", regshiftBO.controlnumber),
+                new MySqlParameter("@intTransactionType", regshiftBO.transactiontype),
+                new MySqlParameter("@decOpeningAmount", regshiftBO.openingamount),
+                new MySqlParameter("@decClosingAmount", regshiftBO.closingamount),
+                new MySqlParameter("@strRemarks", regshiftBO.remarks),
+                new MySqlParameter("@intTransactionStatus", regshiftBO.transactionstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

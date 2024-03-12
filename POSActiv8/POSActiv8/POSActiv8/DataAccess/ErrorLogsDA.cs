@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,13 +14,13 @@ namespace DataAccess
     public class ErrorLogsDA
     {
         //View
-        public SqlDataReader ErrorLogs_View(int intCMD, string strReferenceDateFrom, string strReferenceDateTo)
+        public MySqlDataReader ErrorLogs_View(int intCMD, string strReferenceDateFrom, string strReferenceDateTo)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@intCMD", intCMD),
-                new SqlParameter("@strReferenceDateFrom", strReferenceDateFrom),
-                new SqlParameter("@strReferenceDateTo", strReferenceDateTo)
+                new MySqlParameter("@intCMD", intCMD),
+                new MySqlParameter("@strReferenceDateFrom", strReferenceDateFrom),
+                new MySqlParameter("@strReferenceDateTo", strReferenceDateTo)
             };
 
             try
@@ -36,12 +37,12 @@ namespace DataAccess
         //Save
         public string ErrorLogs_Save(string strSourceFile, string strSectionName, string strErrorDescription, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strSourceFile", strSourceFile),
-                new SqlParameter("@strErrorName", strSectionName),
-                new SqlParameter("@strErrorDescription", strErrorDescription),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strSourceFile", strSourceFile),
+                new MySqlParameter("@strErrorName", strSectionName),
+                new MySqlParameter("@strErrorDescription", strErrorDescription),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

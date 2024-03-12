@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class ItemSubCategoryDA
     {
         //View
-        public SqlDataReader ItemSubCategory_View(int intRecordID, string strSearchQuery)
+        public MySqlDataReader ItemSubCategory_View(int intRecordID, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intRecordID", intRecordID),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@intRecordID", intRecordID),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("ItemSubCategory_View", CommandType.StoredProcedure, myparams);
@@ -35,13 +36,13 @@ namespace DataAccess
         //Post
         public string ItemSubCategory_Post(ItemSubCategoryBO itemsubcatBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strSubCategoryCode", itemsubcatBO.subcategorycode),
-                new SqlParameter("@strSubCategoryName", itemsubcatBO.subcategoryname),
-                new SqlParameter("@intItemCategoryCode", itemsubcatBO.itemcategorycode),
-                new SqlParameter("@intRecordStatus", itemsubcatBO.recordstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strSubCategoryCode", itemsubcatBO.subcategorycode),
+                new MySqlParameter("@strSubCategoryName", itemsubcatBO.subcategoryname),
+                new MySqlParameter("@intItemCategoryCode", itemsubcatBO.itemcategorycode),
+                new MySqlParameter("@intRecordStatus", itemsubcatBO.recordstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

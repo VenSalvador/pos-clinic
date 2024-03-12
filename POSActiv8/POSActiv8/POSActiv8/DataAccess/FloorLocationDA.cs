@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,15 @@ namespace DataAccess
     public class FloorLocationDA
     {
         //View
-        public SqlDataReader FloorLocation_View(string strFloorLocationCode, string strSearchQuery)
+        public MySqlDataReader FloorLocation_View(string strFloorLocationCode, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strFloorLocationCode", strFloorLocationCode),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    
+                    new MySqlParameter("@strFloorLocationCode", strFloorLocationCode),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("FloorLocation_View", CommandType.StoredProcedure, myparams);
@@ -35,14 +37,14 @@ namespace DataAccess
         //Post
         public string FloorLocation_Post(FloorLocationBO floorlocBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strFloorLocationCode", floorlocBO.floorlocationcode),
-                new SqlParameter("@strFloorName", floorlocBO.floorname),
-                new SqlParameter("@strFloorColor", floorlocBO.floorcolor),
+                new MySqlParameter("@strFloorLocationCode", floorlocBO.floorlocationcode),
+                new MySqlParameter("@strFloorName", floorlocBO.floorname),
+                new MySqlParameter("@strFloorColor", floorlocBO.floorcolor),
                 //new SqlParameter("@strFloorDescription", floorlocBO.floordescription),
-                new SqlParameter("@intRecordStatus", floorlocBO.recordstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@intRecordStatus", floorlocBO.recordstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

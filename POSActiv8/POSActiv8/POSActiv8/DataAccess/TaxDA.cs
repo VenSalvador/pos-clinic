@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class TaxDA
     {
         //View
-        public SqlDataReader Tax_View(int intRecordID, string strSearchQuery)
+        public MySqlDataReader Tax_View(int intRecordID, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intRecordID", intRecordID),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@intRecordID", intRecordID),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("Tax_View", CommandType.StoredProcedure, myparams);
@@ -35,13 +36,13 @@ namespace DataAccess
         //Post
         public string Tax_Post(TaxBO taxBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@intRecordID", taxBO.recordid),
-                new SqlParameter("@strTaxName", taxBO.taxname),
-                new SqlParameter("@decTaxAmount", taxBO.taxamount),
-                new SqlParameter("@intRecordStatus", taxBO.recordstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@intRecordID", taxBO.recordid),
+                new MySqlParameter("@strTaxName", taxBO.taxname),
+                new MySqlParameter("@decTaxAmount", taxBO.taxamount),
+                new MySqlParameter("@intRecordStatus", taxBO.recordstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

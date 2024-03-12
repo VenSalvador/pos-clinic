@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,13 +14,13 @@ namespace DataAccess
     public class SystemParametersDA
     {
         //View
-        public SqlDataReader SystemParameters_View(int intParameterCode)
+        public MySqlDataReader SystemParameters_View(int intParameterCode)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intParameterCode", intParameterCode),
+                    new MySqlParameter("@intParameterCode", intParameterCode),
                 };
 
                 return DBHelper.ExecuteParameterizedReader("SystemParameters_View", CommandType.StoredProcedure, myparams);
@@ -31,7 +32,7 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader Months_View()
+        public MySqlDataReader Months_View()
         {
             try
             {

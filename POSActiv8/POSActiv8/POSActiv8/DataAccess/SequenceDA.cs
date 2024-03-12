@@ -6,6 +6,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 

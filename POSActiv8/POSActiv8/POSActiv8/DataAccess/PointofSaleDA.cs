@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class PointofSaleDA
     {
         //View
-        public SqlDataReader POS_MyOrders_View(string strTableCode, string strUserID)
+        public MySqlDataReader POS_MyOrders_View(string strTableCode, string strUserID)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strTableCode", strTableCode),
-                    new SqlParameter("@strUserID", strUserID)
+                    new MySqlParameter("@strTableCode", strTableCode),
+                    new MySqlParameter("@strUserID", strUserID)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_MyOrders_View", CommandType.StoredProcedure, myparams);
@@ -32,13 +33,13 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_Orders_View(DateTime dteReferenceDate)
+        public MySqlDataReader POS_Orders_View(DateTime dteReferenceDate)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@dteReferenceDate", dteReferenceDate)
+                    new MySqlParameter("@dteReferenceDate", dteReferenceDate)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_Orders_View", CommandType.StoredProcedure, myparams);
@@ -51,16 +52,16 @@ namespace DataAccess
         }
 
         //
-        public SqlDataReader POS_Orders_View(string strControlNumber, string strTableCode, string strItemCode, string strUserID)
+        public MySqlDataReader POS_Orders_View(string strControlNumber, string strTableCode, string strItemCode, string strUserID)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strControlNumber", strControlNumber),
-                    new SqlParameter("@strTableCode", strTableCode),
-                    new SqlParameter("@strItemCode", strItemCode),
-                    new SqlParameter("@strUserID", strUserID)
+                    new MySqlParameter("@strControlNumber", strControlNumber),
+                    new MySqlParameter("@strTableCode", strTableCode),
+                    new MySqlParameter("@strItemCode", strItemCode),
+                    new MySqlParameter("@strUserID", strUserID)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_Orders_View", CommandType.StoredProcedure, myparams);
@@ -72,14 +73,14 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_OrdersTotal_View(string strControlNumber, string strUserID)
+        public MySqlDataReader POS_OrdersTotal_View(string strControlNumber, string strUserID)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strControlNumber", strControlNumber),
-                    new SqlParameter("@strUserID", strUserID)
+                    new MySqlParameter("@strControlNumber", strControlNumber),
+                    new MySqlParameter("@strUserID", strUserID)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_OrdersTotal_View", CommandType.StoredProcedure, myparams);
@@ -91,16 +92,16 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_SalesInvoice_View(int intCMD, string strControlNumber, DateTime dteReferenceDateFrom, DateTime dteReferenceDateTo)
+        public MySqlDataReader POS_SalesInvoice_View(int intCMD, string strControlNumber, DateTime dteReferenceDateFrom, DateTime dteReferenceDateTo)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intCMD", intCMD),
-                    new SqlParameter("@strControlNumber", strControlNumber),
-                    new SqlParameter("@dteReferenceDateFrom", dteReferenceDateFrom),
-                    new SqlParameter("@dteReferenceDateTo", dteReferenceDateTo)
+                    new MySqlParameter("@intCMD", intCMD),
+                    new MySqlParameter("@strControlNumber", strControlNumber),
+                    new MySqlParameter("@dteReferenceDateFrom", dteReferenceDateFrom),
+                    new MySqlParameter("@dteReferenceDateTo", dteReferenceDateTo)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_SalesInvoice_View", CommandType.StoredProcedure, myparams);
@@ -112,15 +113,15 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate, string strUserID)
+        public MySqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate, string strUserID)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intTransactionType", intTransactionType),
-                    new SqlParameter("@dteTransactionDate", dteTransactionDate),
-                    new SqlParameter("@strUserID", strUserID)
+                    new MySqlParameter("@intTransactionType", intTransactionType),
+                    new MySqlParameter("@dteTransactionDate", dteTransactionDate),
+                    new MySqlParameter("@strUserID", strUserID)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_XZReport_View", CommandType.StoredProcedure, myparams);
@@ -132,13 +133,13 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_VoidItems_View(DateTime dteTransactionDate)
+        public MySqlDataReader POS_VoidItems_View(DateTime dteTransactionDate)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@dteTransactionDate", dteTransactionDate)
+                    new MySqlParameter("@dteTransactionDate", dteTransactionDate)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_VoidItems_View", CommandType.StoredProcedure, myparams);
@@ -150,13 +151,13 @@ namespace DataAccess
             }
         }
 
-        public SqlDataReader POS_CancelledOrders_View(DateTime dteTransactionDate)
+        public MySqlDataReader POS_CancelledOrders_View(DateTime dteTransactionDate)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@dteTransactionDate", dteTransactionDate)
+                    new MySqlParameter("@dteTransactionDate", dteTransactionDate)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("POS_CancelledOrders_View", CommandType.StoredProcedure, myparams);
@@ -171,14 +172,14 @@ namespace DataAccess
         //Post
         public string POS_Orders_Select(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strTableCode", posBO.tablecode),
-                new SqlParameter("@strCategoryCode", posBO.categorycode),
-                new SqlParameter("@strItemCode", posBO.itemcode),
-                new SqlParameter("@decItemPrice", posBO.itemprice),
-                new SqlParameter("@intItemQuantity", posBO.itemquantity),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strTableCode", posBO.tablecode),
+                new MySqlParameter("@strCategoryCode", posBO.categorycode),
+                new MySqlParameter("@strItemCode", posBO.itemcode),
+                new MySqlParameter("@decItemPrice", posBO.itemprice),
+                new MySqlParameter("@intItemQuantity", posBO.itemquantity),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -194,11 +195,11 @@ namespace DataAccess
 
         public string POS_Orders_Post(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@strTableCode", posBO.tablecode),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@strTableCode", posBO.tablecode),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -214,13 +215,13 @@ namespace DataAccess
 
         public string POS_Orders_Discount(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@strItemCode", posBO.itemcode),
-                new SqlParameter("@intDiscountType", posBO.discounttype),
-                new SqlParameter("@decDiscountAmount", posBO.discountamount),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@strItemCode", posBO.itemcode),
+                new MySqlParameter("@intDiscountType", posBO.discounttype),
+                new MySqlParameter("@decDiscountAmount", posBO.discountamount),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -236,13 +237,13 @@ namespace DataAccess
 
         public string POS_Orders_Quantity(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@strTableCode", posBO.tablecode),
-                new SqlParameter("@strItemCode", posBO.itemcode),
-                new SqlParameter("@intItemQuantity", posBO.itemquantity),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@strTableCode", posBO.tablecode),
+                new MySqlParameter("@strItemCode", posBO.itemcode),
+                new MySqlParameter("@intItemQuantity", posBO.itemquantity),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -258,11 +259,11 @@ namespace DataAccess
 
         public string POS_Orders_ServiceCharge(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@decServiceCharge", posBO.servicecharge),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@decServiceCharge", posBO.servicecharge),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -278,19 +279,19 @@ namespace DataAccess
 
         public string POS_Orders_Payment(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@strTableCode", posBO.tablecode),
-                new SqlParameter("@intPaymentType", posBO.paymenttype),
-                new SqlParameter("@decPaymentAmount", posBO.paymentamount),
-                new SqlParameter("@decChangeDue", posBO.changedue),
-                new SqlParameter("@strCardType", posBO.cardtype),
-                new SqlParameter("@strCardNumber", posBO.cardnumber),
-                new SqlParameter("@strAccountName", posBO.accountname),
-                new SqlParameter("@dteExpiryDate", posBO.expirydate),
-                new SqlParameter("@strGCashReferenceNumber", posBO.gcashreferencenumber),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@strTableCode", posBO.tablecode),
+                new MySqlParameter("@intPaymentType", posBO.paymenttype),
+                new MySqlParameter("@decPaymentAmount", posBO.paymentamount),
+                new MySqlParameter("@decChangeDue", posBO.changedue),
+                new MySqlParameter("@strCardType", posBO.cardtype),
+                new MySqlParameter("@strCardNumber", posBO.cardnumber),
+                new MySqlParameter("@strAccountName", posBO.accountname),
+                new MySqlParameter("@dteExpiryDate", posBO.expirydate),
+                new MySqlParameter("@strGCashReferenceNumber", posBO.gcashreferencenumber),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -306,12 +307,12 @@ namespace DataAccess
 
         public string POS_Orders_Void(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@strItemCode", posBO.itemcode),
-                new SqlParameter("@strVoidAuthorizedBy", posBO.voidauthorizedby),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@strItemCode", posBO.itemcode),
+                new MySqlParameter("@strVoidAuthorizedBy", posBO.voidauthorizedby),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
@@ -328,14 +329,14 @@ namespace DataAccess
 
         public string POS_Orders_Cancel(PointofSaleBO posBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strControlNumber", posBO.controlnumber),
-                new SqlParameter("@strTableCode", posBO.tablecode),
-                new SqlParameter("@intCancelType", posBO.canceltype),
-                new SqlParameter("@strCancelAuthorizedBy", posBO.cancelauthorizedby),
-                new SqlParameter("@strCancelRemarks", posBO.cancelremarks),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strControlNumber", posBO.controlnumber),
+                new MySqlParameter("@strTableCode", posBO.tablecode),
+                new MySqlParameter("@intCancelType", posBO.canceltype),
+                new MySqlParameter("@strCancelAuthorizedBy", posBO.cancelauthorizedby),
+                new MySqlParameter("@strCancelRemarks", posBO.cancelremarks),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

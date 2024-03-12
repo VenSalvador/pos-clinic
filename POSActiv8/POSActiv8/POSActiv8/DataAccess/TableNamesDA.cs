@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class TableNamesDA
     {
         //View
-        public SqlDataReader TableNames_View(string strTableCode, string strSearchQuery)
+        public MySqlDataReader TableNames_View(string strTableCode, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strTableCode", strTableCode),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@strTableCode", strTableCode),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("TableNames_View", CommandType.StoredProcedure, myparams);
@@ -35,13 +36,13 @@ namespace DataAccess
         //Post
         public string TableNames_Post(TableNamesBO tblnamesBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strTableCode", tblnamesBO.tablecode),
-                new SqlParameter("@strTableName", tblnamesBO.tablename),
-                new SqlParameter("@strFloorLocation", tblnamesBO.floorlocationcode),
-                new SqlParameter("@intRecordStatus", tblnamesBO.recordstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strTableCode", tblnamesBO.tablecode),
+                new MySqlParameter("@strTableName", tblnamesBO.tablename),
+                new MySqlParameter("@strFloorLocation", tblnamesBO.floorlocationcode),
+                new MySqlParameter("@intRecordStatus", tblnamesBO.recordstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

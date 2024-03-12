@@ -5,22 +5,23 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
-
 using BusinessObject;
+using MySql.Data.MySqlClient;
+
 
 namespace DataAccess
 {
     public class ChargesDA
     {
         //View
-        public SqlDataReader Charges_View(int intRecordID, string strSearchQuery)
+        public MySqlDataReader Charges_View(int intRecordID, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intRecordID", intRecordID),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@intRecordID", intRecordID),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("Charges_View", CommandType.StoredProcedure, myparams);
@@ -37,13 +38,13 @@ namespace DataAccess
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                 MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intRecordID", chargesBO.recordid),
-                    new SqlParameter("@strChargeName", chargesBO.chargename),
-                    new SqlParameter("@decChargeAmount", chargesBO.chargeamount),
-                    new SqlParameter("@intRecordStatus", chargesBO.recordstatus),
-                    new SqlParameter("@strUserID", strUserID)
+                    new MySqlParameter("@intRecordID", chargesBO.recordid),
+                    new MySqlParameter("@strChargeName", chargesBO.chargename),
+                    new MySqlParameter("@decChargeAmount", chargesBO.chargeamount),
+                    new MySqlParameter("@intRecordStatus", chargesBO.recordstatus),
+                    new MySqlParameter("@strUserID", strUserID)
                 };
 
                 return DBHelper.ExecuteNonQueryParam("Charges_Post", CommandType.StoredProcedure, myparams);

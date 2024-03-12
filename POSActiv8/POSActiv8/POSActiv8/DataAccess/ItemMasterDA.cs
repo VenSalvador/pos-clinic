@@ -5,6 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
+
 
 using BusinessObject;
 
@@ -13,14 +15,14 @@ namespace DataAccess
     public class ItemMasterDA
     {
         //View
-        public SqlDataReader ItemMaster_View(string strItemCode, string strSearchQuery)
+        public MySqlDataReader ItemMaster_View(string strItemCode, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@strItemCode", strItemCode),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@strItemCode", strItemCode),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("ItemMaster_View", CommandType.StoredProcedure, myparams);
@@ -35,16 +37,16 @@ namespace DataAccess
         //Post
         public string ItemMaster_Post(ItemMasterBO itemmastBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strItemCode", itemmastBO.itemcode),
-                new SqlParameter("@strItemName", itemmastBO.itemname),
-                new SqlParameter("@strItemDescription", itemmastBO.itemdescription),
-                new SqlParameter("@strItemCategory", itemmastBO.itemcategory),
-                new SqlParameter("@strItemSubCategory", itemmastBO.itemsubcategory),
-                new SqlParameter("@decItemPrice", itemmastBO.itemprice),
-                new SqlParameter("@intItemStatus", itemmastBO.itemstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strItemCode", itemmastBO.itemcode),
+                new MySqlParameter("@strItemName", itemmastBO.itemname),
+                new MySqlParameter("@strItemDescription", itemmastBO.itemdescription),
+                new MySqlParameter("@strItemCategory", itemmastBO.itemcategory),
+                new MySqlParameter("@strItemSubCategory", itemmastBO.itemsubcategory),
+                new MySqlParameter("@decItemPrice", itemmastBO.itemprice),
+                new MySqlParameter("@intItemStatus", itemmastBO.itemstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

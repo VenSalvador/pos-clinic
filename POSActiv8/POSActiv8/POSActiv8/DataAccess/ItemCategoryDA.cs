@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,14 +14,14 @@ namespace DataAccess
     public class ItemCategoryDA
     {
         //View
-        public SqlDataReader ItemCategory_View(int intRecordID, string strSearchQuery)
+        public MySqlDataReader ItemCategory_View(int intRecordID, string strSearchQuery)
         {
             try
             {
-                SqlParameter[] myparams = new SqlParameter[]
+                MySqlParameter[] myparams = new MySqlParameter[]
                 {
-                    new SqlParameter("@intRecordID", intRecordID),
-                    new SqlParameter("@strSearchQuery", strSearchQuery)
+                    new MySqlParameter("@intRecordID", intRecordID),
+                    new MySqlParameter("@strSearchQuery", strSearchQuery)
                 };
 
                 return DBHelper.ExecuteParameterizedReader("ItemCategory_View", CommandType.StoredProcedure, myparams);
@@ -35,13 +36,13 @@ namespace DataAccess
         //Post
         public string ItemCategory_Post(ItemCategoryBO itemcatBO, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strCategoryCode", itemcatBO.categorycode),
-                new SqlParameter("@strCategoryName", itemcatBO.categoryname),
-                new SqlParameter("@strCategoryColor", itemcatBO.categorycolor),
-                new SqlParameter("@intRecordStatus", itemcatBO.recordstatus),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strCategoryCode", itemcatBO.categorycode),
+                new MySqlParameter("@strCategoryName", itemcatBO.categoryname),
+                new MySqlParameter("@strCategoryColor", itemcatBO.categorycolor),
+                new MySqlParameter("@intRecordStatus", itemcatBO.recordstatus),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try

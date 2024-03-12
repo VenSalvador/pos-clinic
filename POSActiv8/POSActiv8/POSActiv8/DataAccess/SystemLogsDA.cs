@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 
@@ -13,13 +14,13 @@ namespace DataAccess
     public class SystemLogsDA
     {
         //View
-        public SqlDataReader SystemLogs_View(int intCMD, string strReferenceDateFrom, string strReferenceDateTo)
+        public MySqlDataReader SystemLogs_View(int intCMD, string strReferenceDateFrom, string strReferenceDateTo)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@intCMD", intCMD),
-                new SqlParameter("@strReferenceDateFrom", strReferenceDateFrom),
-                new SqlParameter("@strReferenceDateTo", strReferenceDateTo)
+                new MySqlParameter("@intCMD", intCMD),
+                new MySqlParameter("@strReferenceDateFrom", strReferenceDateFrom),
+                new MySqlParameter("@strReferenceDateTo", strReferenceDateTo)
             };
 
             try
@@ -36,12 +37,12 @@ namespace DataAccess
         //Save
         public string SystemLogs_Save(string strSourceFile, string strActivity, string strRemarks, string strUserID)
         {
-            SqlParameter[] myparams = new SqlParameter[]
+            MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new SqlParameter("@strSourceFile", strSourceFile),
-                new SqlParameter("@strActivity", strActivity),
-                new SqlParameter("@strRemarks", strRemarks),
-                new SqlParameter("@strUserID", strUserID)
+                new MySqlParameter("@strSourceFile", strSourceFile),
+                new MySqlParameter("@strActivity", strActivity),
+                new MySqlParameter("@strRemarks", strRemarks),
+                new MySqlParameter("@strUserID", strUserID)
             };
 
             try
