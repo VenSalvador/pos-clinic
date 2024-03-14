@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using DataAccess;
@@ -14,7 +15,7 @@ namespace BusinessLogic
     public class ItemMasterBL
     {
         //View
-        public SqlDataReader ItemMaster_View(string strItemCode, string strSearchQuery)
+        public MySqlDataReader ItemMaster_View(string strItemCode, string strSearchQuery)
         {
             try
             {

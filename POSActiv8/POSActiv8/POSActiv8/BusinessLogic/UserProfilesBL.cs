@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using DataAccess;
@@ -14,7 +15,7 @@ namespace BusinessLogic
     public class UserProfilesBL
     {
         //View
-        public SqlDataReader UserProfiles_View(string strUserID, string strSearchQuery)
+        public MySqlDataReader UserProfiles_View(string strUserID, string strSearchQuery)
         {
             try
             {

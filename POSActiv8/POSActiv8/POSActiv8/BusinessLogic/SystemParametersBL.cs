@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using DataAccess;
@@ -14,7 +15,7 @@ namespace BusinessLogic
     public class SystemParametersBL
     {
         //View
-        public SqlDataReader SystemParameters_View(int intParameterCode)
+        public MySqlDataReader SystemParameters_View(int intParameterCode)
         {
             try
             {
@@ -28,7 +29,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader Months_View()
+        public MySqlDataReader Months_View()
         {
             try
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using DataAccess;
@@ -14,7 +15,7 @@ namespace BusinessLogic
     public class RegisterShiftBL
     {
         //View
-        public SqlDataReader RegisterShift_View(string strControlNumber, string strSearchQuery)
+        public MySqlDataReader RegisterShift_View(string strControlNumber, string strSearchQuery)
         {
             try
             {
@@ -28,7 +29,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate)
+        public MySqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate)
         {
             try
             {

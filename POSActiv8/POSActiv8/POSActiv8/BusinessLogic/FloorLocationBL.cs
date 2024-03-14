@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using DataAccess;
@@ -14,7 +15,7 @@ namespace BusinessLogic
     public class FloorLocationBL
     {
         //View
-        public SqlDataReader FloorLocation_View(string strFloorLocationCode, string strSearchQuery)
+        public MySqlDataReader FloorLocation_View(string strFloorLocationCode, string strSearchQuery)
         {
             try
             {

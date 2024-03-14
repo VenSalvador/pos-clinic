@@ -13,6 +13,8 @@ using OfficeOpenXml;
 using BusinessLogic;
 using DataAccess;
 using OfficeOpenXml.Style;
+using MySql.Data.MySqlClient;
+
 
 namespace POSActiv8
 {
@@ -55,7 +57,7 @@ namespace POSActiv8
                     this.txtTransactionDate.Text = dteTransactionDate.ToString("yyyy-MM-dd");
 
                     //Cancelled Orders
-                    using (SqlDataReader drVOIDITEMS = posBL.POS_CancelledOrders_View(dteTransactionDate))
+                    using (MySqlDataReader drVOIDITEMS = posBL.POS_CancelledOrders_View(dteTransactionDate))
                     {
                         this.lblCancelledOrders.Visible = true;
 
@@ -128,7 +130,7 @@ namespace POSActiv8
                     this.txtTransactionDate.Text = dteTransactionDate.ToString("yyyy-MM-dd");
 
                     //Cancelled Orders
-                    using (SqlDataReader drVOIDITEMS = posBL.POS_CancelledOrders_View(Convert.ToDateTime(this.txtTransactionDate.Text)))
+                    using (MySqlDataReader drVOIDITEMS = posBL.POS_CancelledOrders_View(Convert.ToDateTime(this.txtTransactionDate.Text)))
                     {
                         this.lblCancelledOrders.Visible = true;
 
@@ -217,7 +219,7 @@ namespace POSActiv8
                     using (var package = new ExcelPackage(strSaveCancelledOrders))
                     {
                         //Sales Invoice Header
-                        using (SqlDataReader drEXPORTCANCELLEDORDERS = posBL.POS_CancelledOrders_View(dteTransactionDate))
+                        using (MySqlDataReader drEXPORTCANCELLEDORDERS = posBL.POS_CancelledOrders_View(dteTransactionDate))
                         {
                             //Worksheet
                             ExcelWorksheet worksheetCANCELLEDORDERS = package.Workbook.Worksheets.Add("Cancelled Orders");

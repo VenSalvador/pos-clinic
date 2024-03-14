@@ -13,6 +13,7 @@ using System.DirectoryServices.ActiveDirectory;
 using System.DirectoryServices.AccountManagement;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -62,7 +63,7 @@ namespace POSActiv8
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Modal", "showModal();", true);
 
                     //GameX Registration
-                    using (SqlDataReader drGAMEXREG = gamexregBL.GameXRegistrataion_View(0, string.Empty))
+                    using (MySqlDataReader drGAMEXREG = gamexregBL.GameXRegistrataion_View(0, string.Empty))
                     {
                         this.lblUserProfiles.Visible = true;
 
@@ -126,7 +127,7 @@ namespace POSActiv8
                 this.lblUserProfileDetails.Text = "Guest Details";
 
                 //User Profiles
-                using (SqlDataReader drUSERPROFILES = gamexregBL.GameXRegistrataion_View(Convert.ToInt32(this.lblRecordID.Text), string.Empty))
+                using (MySqlDataReader drUSERPROFILES = gamexregBL.GameXRegistrataion_View(Convert.ToInt32(this.lblRecordID.Text), string.Empty))
                 {
                     this.lblUserProfiles.Visible = true;
 
@@ -176,7 +177,7 @@ namespace POSActiv8
 
             try
             {
-                using (SqlDataReader drUSERPROFILES = gamexregBL.GameXRegistrataion_View(0, this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drUSERPROFILES = gamexregBL.GameXRegistrataion_View(0, this.txtSearch.Text.Trim()))
                 {
                     this.lblUserProfiles.Visible = true;
 

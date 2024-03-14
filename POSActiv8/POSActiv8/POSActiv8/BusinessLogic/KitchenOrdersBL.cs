@@ -8,13 +8,15 @@ using System.Data.SqlClient;
 
 using BusinessObject;
 using DataAccess;
+using MySql.Data.MySqlClient;
+
 
 namespace BusinessLogic
 {
     public class KitchenOrdersBL
     {
         //View
-        public SqlDataReader POS_KitchenOrders_View(string strControlNumber, DateTime dteTransactionDate)
+        public MySqlDataReader POS_KitchenOrders_View(string strControlNumber, DateTime dteTransactionDate)
         {
             try
             {

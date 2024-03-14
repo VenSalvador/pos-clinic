@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using DataAccess;
@@ -14,7 +15,7 @@ namespace BusinessLogic
     public class PointofSaleBL
     {
         //View
-        public SqlDataReader POS_MyOrders_View(string strTableCode, string strUserID)
+        public MySqlDataReader POS_MyOrders_View(string strTableCode, string strUserID)
         {
             try
             {
@@ -27,7 +28,7 @@ namespace BusinessLogic
                 throw ex;
             }
         }
-        public SqlDataReader POS_Orders_View(DateTime dteReferenceDate)
+        public MySqlDataReader POS_Orders_View(DateTime dteReferenceDate)
         {
             try
             {
@@ -42,7 +43,7 @@ namespace BusinessLogic
         }
 
         //
-        public SqlDataReader POS_Orders_View(string strControlNumber, string strTableCode, string strItemCode, string strUserID)
+        public MySqlDataReader POS_Orders_View(string strControlNumber, string strTableCode, string strItemCode, string strUserID)
         {
             try
             {
@@ -56,7 +57,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader POS_OrdersTotal_View(string strControlNumber, string strUserID)
+        public MySqlDataReader POS_OrdersTotal_View(string strControlNumber, string strUserID)
         {
             try
             {
@@ -70,7 +71,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader POS_SalesInvoice_View(int intCMD, string strControlNumber, DateTime dteReferenceDateFrom, DateTime dteReferenceDateTo)
+        public MySqlDataReader POS_SalesInvoice_View(int intCMD, string strControlNumber, DateTime dteReferenceDateFrom, DateTime dteReferenceDateTo)
         {
             try
             {
@@ -84,7 +85,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate, string strUserID)
+        public MySqlDataReader POS_XZReport_View(int intTransactionType, DateTime dteTransactionDate, string strUserID)
         {
             try
             {
@@ -98,7 +99,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader POS_VoidItems_View(DateTime dteTransactionDate)
+        public MySqlDataReader POS_VoidItems_View(DateTime dteTransactionDate)
         {
             try
             {
@@ -112,7 +113,7 @@ namespace BusinessLogic
             }
         }
 
-        public SqlDataReader POS_CancelledOrders_View(DateTime dteTransactionDate)
+        public MySqlDataReader POS_CancelledOrders_View(DateTime dteTransactionDate)
         {
             try
             {
