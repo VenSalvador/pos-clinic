@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessLogic;
 using DataAccess;
@@ -63,7 +64,7 @@ namespace POSActiv8
                     this.txtReferenceDate.Text = dteReferenceDateFrom.ToString("yyyy-MM-dd");
 
                     //Error Logs
-                    using (SqlDataReader drERRORLOGS = elBL.ErrorLogs_View(1, strReferenceDateFrom, strReferenceDateTo))
+                    using (MySqlDataReader drERRORLOGS = elBL.ErrorLogs_View(1, strReferenceDateFrom, strReferenceDateTo))
                     {
                         this.divErrorLogs.Visible = true;
                         this.lblErrorLogs.Visible = true;
@@ -135,7 +136,7 @@ namespace POSActiv8
                     this.txtReferenceDate.Text = strReferenceDateFrom;
 
                     //Error Logs
-                    using (SqlDataReader drERRORLOGS = elBL.ErrorLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
+                    using (MySqlDataReader drERRORLOGS = elBL.ErrorLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
                     {
                         this.divErrorLogs.Visible = true;
                         this.lblErrorLogs.Visible = true;
@@ -283,7 +284,7 @@ namespace POSActiv8
                     using (var package = new ExcelPackage(strSaveErrorLogs))
                     {
                         //Export System Logs
-                        using (SqlDataReader drEXPORTERRORLOGS = elBL.ErrorLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
+                        using (MySqlDataReader drEXPORTERRORLOGS = elBL.ErrorLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
                         {
                             //Worksheet
                             ExcelWorksheet worksheetEXPORTERRORLOGS = package.Workbook.Worksheets.Add(strFileName);

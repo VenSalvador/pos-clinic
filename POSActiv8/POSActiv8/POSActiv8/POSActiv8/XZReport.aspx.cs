@@ -13,6 +13,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using iTextSharp.text.pdf.fonts;
+using MySql.Data.MySqlClient;
 
 using BusinessLogic;
 using DataAccess;
@@ -37,7 +38,7 @@ namespace POSActiv8
         public void POSTerminals()
         {
             //POS Terminals
-            using (SqlDataReader drPOSTERMINALS = possessBL.POS_Sessions_View("1", Convert.ToDateTime(this.txtTransactionDate.Text).ToString("yyyy-MM-dd")))
+            using (MySqlDataReader drPOSTERMINALS = possessBL.POS_Sessions_View("1", Convert.ToDateTime(this.txtTransactionDate.Text).ToString("yyyy-MM-dd")))
             {
                 this.ddlPOSTerminal.Items.Clear();
                 this.ddlPOSTerminal.DataSource = drPOSTERMINALS;
@@ -192,7 +193,7 @@ namespace POSActiv8
                         document.Add(new Paragraph("\n"));
 
                         //XZ Report
-                        using (SqlDataReader drXZREPORT = registershiftBL.POS_XZReport_View(intTransactionType, dteTransactionDate))
+                        using (MySqlDataReader drXZREPORT = registershiftBL.POS_XZReport_View(intTransactionType, dteTransactionDate))
                         {
                             if (drXZREPORT.Read())
                             {
@@ -271,7 +272,7 @@ namespace POSActiv8
                         UserProfilesBL userprofBL = new UserProfilesBL();
                         var strUserName = string.Empty;
 
-                        using (SqlDataReader drUSERPROFILE = userprofBL.UserProfiles_View(strUserID, string.Empty))
+                        using (MySqlDataReader drUSERPROFILE = userprofBL.UserProfiles_View(strUserID, string.Empty))
                         {
                             if (drUSERPROFILE.Read())
                             {
@@ -399,7 +400,7 @@ namespace POSActiv8
                         document.Add(new Paragraph("\n"));
 
                         //XZ Report
-                        using (SqlDataReader drXZREPORT = posBL.POS_XZReport_View(intTransactionType, dteTransactionDate, this.ddlPOSTerminal.SelectedValue))
+                        using (MySqlDataReader drXZREPORT = posBL.POS_XZReport_View(intTransactionType, dteTransactionDate, this.ddlPOSTerminal.SelectedValue))
                         {
                             if (drXZREPORT.Read())
                             {
@@ -488,7 +489,7 @@ namespace POSActiv8
                         UserProfilesBL userprofBL = new UserProfilesBL();
                         var strUserName = string.Empty;
 
-                        using (SqlDataReader drUSERPROFILE = userprofBL.UserProfiles_View(strUserID, string.Empty))
+                        using (MySqlDataReader drUSERPROFILE = userprofBL.UserProfiles_View(strUserID, string.Empty))
                         {
                             if (drUSERPROFILE.Read())
                             {

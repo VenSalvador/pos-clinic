@@ -174,7 +174,7 @@ namespace POSActiv8
 
                     //Button Controls
                     this.divButtonControls.Visible = false;
-
+                                                                                                     
                     //Cancelled Orders
                     this.divCancelledOrders.Visible = false;
                 }

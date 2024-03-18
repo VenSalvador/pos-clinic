@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -57,7 +58,7 @@ namespace POSActiv8
                 try
                 {
                     //Item Category
-                    using (SqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
+                    using (MySqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
                     {
                         if (drITEMCATEGORY.HasRows)
                         {
@@ -121,7 +122,7 @@ namespace POSActiv8
                 this.lblItemCategoryDetails.Text = "Item Category Details";
 
                 //Item Category
-                using (SqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(intRecordID, string.Empty))
+                using (MySqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(intRecordID, string.Empty))
                 {
                     if (drITEMCATEGORY.Read())
                     {
@@ -183,7 +184,7 @@ namespace POSActiv8
             try
             {
                 //Item Category
-                using (SqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, this.txtSearch.Text.Trim()))
                 {
                     if (drITEMCATEGORY.HasRows)
                     {

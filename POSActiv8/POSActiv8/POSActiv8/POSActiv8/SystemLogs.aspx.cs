@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessLogic;
 using DataAccess;
@@ -59,7 +60,7 @@ namespace POSActiv8
                     this.txtReferenceDate.Text = dteReferenceDateFrom.ToString("yyyy-MM-dd");
 
                     //System Logs
-                    using (SqlDataReader drSYSTEMLOGS = slBL.SystemLogs_View(1, strReferenceDateFrom, strReferenceDateTo))
+                    using (MySqlDataReader drSYSTEMLOGS = slBL.SystemLogs_View(1, strReferenceDateFrom, strReferenceDateTo))
                     {
                         this.lblSystemLogs.Visible = true;
 
@@ -131,7 +132,7 @@ namespace POSActiv8
                     this.txtReferenceDate.Text = dteReferenceDateFrom.ToString("yyyy-MM-dd");
 
                     //System Logs
-                    using (SqlDataReader drSYSTEMLOGS = slBL.SystemLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
+                    using (MySqlDataReader drSYSTEMLOGS = slBL.SystemLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
                     {
                         this.divSystemLogs.Visible = true;
                         this.lblSystemLogs.Visible = true;
@@ -279,7 +280,7 @@ namespace POSActiv8
                     using (var package = new ExcelPackage(strSaveSystemLogs))
                     {
                         //Export System Logs
-                        using (SqlDataReader drEXPORTSYSTEMLOGS = slBL.SystemLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
+                        using (MySqlDataReader drEXPORTSYSTEMLOGS = slBL.SystemLogs_View(2, strReferenceDateFrom, strReferenceDateTo))
                         {
                             //Worksheet
                             ExcelWorksheet worksheetEXPORTSYSTEMLOGS = package.Workbook.Worksheets.Add(strFileName);

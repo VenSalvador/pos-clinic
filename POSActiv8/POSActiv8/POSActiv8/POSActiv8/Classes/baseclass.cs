@@ -14,6 +14,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using iTextSharp.text.pdf.fonts;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -156,7 +157,7 @@ namespace POSActiv8.Classes
             else
             {
                 //User Profiles
-                using (SqlDataReader drUSERPROFILES = upBL.UserProfiles_View(strUserID, string.Empty))
+                using (MySqlDataReader drUSERPROFILES = upBL.UserProfiles_View(strUserID, string.Empty))
                 {
                     if (!drUSERPROFILES.HasRows)
                     {

@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -37,7 +38,7 @@ namespace POSActiv8
         public void ItemCategory()
         {
             //Item Category
-            using (SqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
+            using (MySqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
             {
                 this.ddlItemCategory.Items.Clear();
                 this.ddlItemCategory.DataSource = drITEMCATEGORY;
@@ -74,7 +75,7 @@ namespace POSActiv8
                 try
                 {
                     //Item SubCategory
-                    using (SqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(0, string.Empty))
+                    using (MySqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(0, string.Empty))
                     {
                         if (drITEMSUBCATEGORY.HasRows)
                         {
@@ -140,7 +141,7 @@ namespace POSActiv8
                 this.lblItemSubCategoryDetails.Text = "Item SubCategory Details";
 
                 //Item SubCategory
-                using (SqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(intRecordID, string.Empty))
+                using (MySqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(intRecordID, string.Empty))
                 {
                     if (drITEMSUBCATEGORY.Read())
                     {
@@ -202,7 +203,7 @@ namespace POSActiv8
             try
             {
                 //Item SubCategory
-                using (SqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(0, this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(0, this.txtSearch.Text.Trim()))
                 {
                     if (drITEMSUBCATEGORY.HasRows)
                     {

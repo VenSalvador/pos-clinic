@@ -13,6 +13,7 @@ using System.DirectoryServices.ActiveDirectory;
 using System.DirectoryServices.AccountManagement;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -36,7 +37,7 @@ namespace POSActiv8
         public void UserLevel()
         {
             //User Level
-            using (SqlDataReader dr = sysparamBL.SystemParameters_View(1))
+            using (MySqlDataReader dr = sysparamBL.SystemParameters_View(1))
             {
                 this.ddlUserLevel.Items.Clear();
                 this.ddlUserLevel.DataSource = dr;
@@ -52,7 +53,7 @@ namespace POSActiv8
         public void UserRole()
         {
             //User Role
-            using (SqlDataReader dr = sysparamBL.SystemParameters_View(2))
+            using (MySqlDataReader dr = sysparamBL.SystemParameters_View(2))
             {
                 this.ddlUserRole.Items.Clear();
                 this.ddlUserRole.DataSource = dr;
@@ -67,7 +68,7 @@ namespace POSActiv8
         public void UserStatus()
         {
             //User Status
-            using (SqlDataReader dr = sysparamBL.SystemParameters_View(3))
+            using (MySqlDataReader dr = sysparamBL.SystemParameters_View(3))
             {
                 this.rdoUserStatus.Items.Clear();
                 this.rdoUserStatus.DataSource = dr;
@@ -82,7 +83,7 @@ namespace POSActiv8
         public void LoginStatus()
         {
             //Login Status
-            using (SqlDataReader dr = sysparamBL.SystemParameters_View(4))
+            using (MySqlDataReader dr = sysparamBL.SystemParameters_View(4))
             {
                 this.rdoLoginStatus.Items.Clear();
                 this.rdoLoginStatus.DataSource = dr;
@@ -121,7 +122,7 @@ namespace POSActiv8
                 try
                 {
                     //User Profiles
-                    using (SqlDataReader drUF = upBL.UserProfiles_View(string.Empty, string.Empty))
+                    using (MySqlDataReader drUF = upBL.UserProfiles_View(string.Empty, string.Empty))
                     {
                         this.lblUserProfiles.Visible = true;
 
@@ -189,7 +190,7 @@ namespace POSActiv8
                 this.lblUserProfileDetails.Text = "User Profile Details";
 
                 //User Profiles
-                using (SqlDataReader drUSERPROFILES = upBL.UserProfiles_View(this.lblRecordID.Text.Trim(), string.Empty))
+                using (MySqlDataReader drUSERPROFILES = upBL.UserProfiles_View(this.lblRecordID.Text.Trim(), string.Empty))
                 {
                     this.lblUserProfiles.Visible = true;
 
@@ -255,7 +256,7 @@ namespace POSActiv8
 
             try
             {
-                using (SqlDataReader drUSERPROFILES = upBL.UserProfiles_View(string.Empty, this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drUSERPROFILES = upBL.UserProfiles_View(string.Empty, this.txtSearch.Text.Trim()))
                 {
                     this.lblUserProfiles.Visible = true;
 
@@ -364,7 +365,7 @@ namespace POSActiv8
                 using (var package = new ExcelPackage(strSaveUserProfiles))
                 {
                     //Export User Profiles
-                    using (SqlDataReader drEXPORTUSERPROFILES = upBL.UserProfiles_View(string.Empty, string.Empty))
+                    using (MySqlDataReader drEXPORTUSERPROFILES = upBL.UserProfiles_View(string.Empty, string.Empty))
                     {
                         //Worksheet
                         ExcelWorksheet worksheetEXPORTUSERPROFILES = package.Workbook.Worksheets.Add("UserProfiles");

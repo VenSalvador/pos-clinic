@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessLogic;
 using DataAccess;
@@ -55,7 +56,7 @@ namespace POSActiv8
                     this.txtTransactionDate.Text = dteTransactionDate.ToString("yyyy-MM-dd");
 
                     //Void Items
-                    using (SqlDataReader drVOIDITEMS = posBL.POS_VoidItems_View(dteTransactionDate))
+                    using (MySqlDataReader drVOIDITEMS = posBL.POS_VoidItems_View(dteTransactionDate))
                     {
                         this.lblVoidItems.Visible = true;
 
@@ -128,7 +129,7 @@ namespace POSActiv8
                     this.txtTransactionDate.Text = dteTransactionDate.ToString("yyyy-MM-dd");
 
                     //Void Items
-                    using (SqlDataReader drVOIDITEMS = posBL.POS_VoidItems_View(Convert.ToDateTime(this.txtTransactionDate.Text)))
+                    using (MySqlDataReader drVOIDITEMS = posBL.POS_VoidItems_View(Convert.ToDateTime(this.txtTransactionDate.Text)))
                     {
                         this.lblVoidItems.Visible = true;
 
@@ -217,7 +218,7 @@ namespace POSActiv8
                     using (var package = new ExcelPackage(strSaveVoidItems))
                     {
                         //Sales Invoice Header
-                        using (SqlDataReader drEXPORTVOIDITEMS = posBL.POS_VoidItems_View(dteTransactionDate))
+                        using (MySqlDataReader drEXPORTVOIDITEMS = posBL.POS_VoidItems_View(dteTransactionDate))
                         {
                             //Worksheet
                             ExcelWorksheet worksheetVOIDITEMS = package.Workbook.Worksheets.Add("Void Items");

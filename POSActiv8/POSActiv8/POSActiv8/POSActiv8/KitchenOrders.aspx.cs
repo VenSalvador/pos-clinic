@@ -14,6 +14,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using iTextSharp.text.pdf.fonts;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -82,7 +83,7 @@ namespace POSActiv8
                 try
                 {
                     //Kitchen Orders
-                    using (SqlDataReader drKITCHENORDERS = kitchordersBL.POS_KitchenOrders_View("0", Convert.ToDateTime(this.hfTransactionDate.Value)))
+                    using (MySqlDataReader drKITCHENORDERS = kitchordersBL.POS_KitchenOrders_View("0", Convert.ToDateTime(this.hfTransactionDate.Value)))
                     {
                         if (drKITCHENORDERS.HasRows)
                         {
@@ -145,7 +146,7 @@ namespace POSActiv8
                 ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", "swal('Orders Delivered', '" + strTableName + "' + ' orders has been delivered (' + '" + strControlNumber + "' + ')', 'success'); ", true);
 
                 //Kitchen Orders
-                using (SqlDataReader drKITCHENORDERS = kitchordersBL.POS_KitchenOrders_View("0", Convert.ToDateTime(this.hfTransactionDate.Value)))
+                using (MySqlDataReader drKITCHENORDERS = kitchordersBL.POS_KitchenOrders_View("0", Convert.ToDateTime(this.hfTransactionDate.Value)))
                 {
                     if (drKITCHENORDERS.HasRows)
                     {
@@ -193,7 +194,7 @@ namespace POSActiv8
             if (dsPOSTRANSACTIONDATE.Tables[0].Rows.Count > 0)
             {
                 //Order Items
-                using (SqlDataReader drORDERITEMS = kitchordersBL.POS_KitchenOrders_View(lblControlNumber.Text, Convert.ToDateTime(dsPOSTRANSACTIONDATE.Tables[0].Rows[0]["TransactionDate"])))
+                using (MySqlDataReader drORDERITEMS = kitchordersBL.POS_KitchenOrders_View(lblControlNumber.Text, Convert.ToDateTime(dsPOSTRANSACTIONDATE.Tables[0].Rows[0]["TransactionDate"])))
                 {
                     if (drORDERITEMS.HasRows)
                     {

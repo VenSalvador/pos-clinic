@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -57,7 +58,7 @@ namespace POSActiv8
                 try
                 {
                     //Floor Location
-                    using (SqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View("0", string.Empty))
+                    using (MySqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View("0", string.Empty))
                     {
                         if (drFLOORLOCATION.HasRows)
                         {
@@ -121,7 +122,7 @@ namespace POSActiv8
                 this.lblFloorLocaitonTitle.Text = "Floor Location Details";
 
                 //Floor Location
-                using (SqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View(strFloorLocationCode, string.Empty))
+                using (MySqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View(strFloorLocationCode, string.Empty))
                 {
                     if (drFLOORLOCATION.Read())
                     {
@@ -183,7 +184,7 @@ namespace POSActiv8
             try
             {
                 //Floor Location
-                using (SqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View("0", this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View("0", this.txtSearch.Text.Trim()))
                 {
                     if (drFLOORLOCATION.HasRows)
                     {

@@ -16,6 +16,7 @@ using OfficeOpenXml;
 using System.Web.Services;
 using System.Net;
 using System.Web.Script.Serialization;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -65,7 +66,7 @@ namespace POSActiv8
                    // this.txtTransactionDate.Text = dteTransactionDate.ToString("yyyy-MM-dd");
 
                     //Sales Invoice
-                    using (SqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, dteTransactionDate, dteTransactionDate))
+                    using (MySqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, dteTransactionDate, dteTransactionDate))
                     {
                         if (drSALESINVOICE.Read())
                         {
@@ -79,7 +80,7 @@ namespace POSActiv8
                     }
 
                     //Opening and Closing
-                    using (SqlDataReader drREGISTERSHIFT = regshiftBL.RegisterShift_View("1", dteTransactionDate.ToString("yyyy-MM-dd")))
+                    using (MySqlDataReader drREGISTERSHIFT = regshiftBL.RegisterShift_View("1", dteTransactionDate.ToString("yyyy-MM-dd")))
                     {
                         if (drREGISTERSHIFT.Read())
                         {

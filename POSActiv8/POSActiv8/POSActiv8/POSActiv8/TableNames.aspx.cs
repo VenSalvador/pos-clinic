@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -37,7 +38,7 @@ namespace POSActiv8
         public void FloorLocation()
         {
             //Floor Location
-            using (SqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View("0", string.Empty))
+            using (MySqlDataReader drFLOORLOCATION = floorlocBL.FloorLocation_View("0", string.Empty))
             {
                 this.ddlFloorLocation.Items.Clear();
                 this.ddlFloorLocation.DataSource = drFLOORLOCATION;
@@ -74,7 +75,7 @@ namespace POSActiv8
                 try
                 {
                     //Table Names
-                    using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("0", string.Empty))
+                    using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("0", string.Empty))
                     {
                         if (drTABLENAMES.HasRows)
                         {
@@ -138,7 +139,7 @@ namespace POSActiv8
                 this.lblTableNamesTitle.Text = "Table Name Details";
 
                 //Table Names
-                using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View(strTableCode, string.Empty))
+                using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View(strTableCode, string.Empty))
                 {
                     if (drTABLENAMES.Read())
                     {
@@ -199,7 +200,7 @@ namespace POSActiv8
             try
             {
                 //Table Names
-                using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("0", this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("0", this.txtSearch.Text.Trim()))
                 {
                     if (drTABLENAMES.HasRows)
                     {

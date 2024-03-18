@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Management;
 using System.Net;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;

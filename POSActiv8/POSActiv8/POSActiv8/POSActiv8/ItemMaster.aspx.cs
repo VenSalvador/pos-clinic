@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -38,7 +39,7 @@ namespace POSActiv8
         public void ItemCategory()
         {
             //Item Category
-            using (SqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
+            using (MySqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
             {
                 this.ddlItemCategory.Items.Clear();
                 this.ddlItemCategory.DataSource = drITEMCATEGORY;
@@ -54,7 +55,7 @@ namespace POSActiv8
         public void ItemSubCategory()
         {
             //Item Category
-            using (SqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(1, this.ddlItemCategory.SelectedValue))
+            using (MySqlDataReader drITEMSUBCATEGORY = itemsubcatBL.ItemSubCategory_View(1, this.ddlItemCategory.SelectedValue))
             {
                 this.ddlItemSubCategory.Items.Clear();
                 this.ddlItemSubCategory.DataSource = drITEMSUBCATEGORY;
@@ -91,7 +92,7 @@ namespace POSActiv8
                 try
                 {
                     //Item Master
-                    using (SqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", string.Empty))
+                    using (MySqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", string.Empty))
                     {
                         if (drITEMMASTER.HasRows)
                         {
@@ -157,7 +158,7 @@ namespace POSActiv8
                 ItemCategory();
 
                 //Item Master
-                using (SqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View(strItemCode, string.Empty))
+                using (MySqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View(strItemCode, string.Empty))
                 {
                     if (drITEMMASTER.Read())
                     {
@@ -224,7 +225,7 @@ namespace POSActiv8
             try
             {
                 //Item Master
-                using (SqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", this.txtSearch.Text.Trim()))
                 {
                     if (drITEMMASTER.HasRows)
                     {

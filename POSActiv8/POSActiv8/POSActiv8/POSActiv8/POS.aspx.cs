@@ -15,6 +15,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using iTextSharp.text.pdf.fonts;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -98,7 +99,7 @@ namespace POSActiv8
         public void DiscountType()
         {
             //Discount Type
-            using (SqlDataReader drDISCOUNTTYPE = discBL.Discounts_View(0, string.Empty))
+            using (MySqlDataReader drDISCOUNTTYPE = discBL.Discounts_View(0, string.Empty))
             {
                 this.ddlDiscountType.Items.Clear();
                 this.ddlDiscountType.DataSource = drDISCOUNTTYPE;
@@ -117,7 +118,7 @@ namespace POSActiv8
             strUserID = Request.QueryString["userid"];
 
             //Orders
-            using (SqlDataReader drMYORDERS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+            using (MySqlDataReader drMYORDERS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
             {
                 this.ddlOrderItemsQuantity.Items.Clear();
                 this.ddlOrderItemsQuantity.DataSource = drMYORDERS;
@@ -134,7 +135,7 @@ namespace POSActiv8
         public void ServiceCharge()
         {
             //Service Charge
-            using (SqlDataReader drSERVICECHARGE = chargesBL.Charges_View(1, "1"))
+            using (MySqlDataReader drSERVICECHARGE = chargesBL.Charges_View(1, "1"))
             {
                 this.ddlServiceCharge.Items.Clear();
                 this.ddlServiceCharge.DataSource = drSERVICECHARGE;
@@ -151,7 +152,7 @@ namespace POSActiv8
         public void PaymentType()
         {
             //Payment Type
-            using (SqlDataReader drPAYMENTTYPE = sysparamBL.SystemParameters_View(9))
+            using (MySqlDataReader drPAYMENTTYPE = sysparamBL.SystemParameters_View(9))
             {
                 this.ddlPaymentType.Items.Clear();
                 this.ddlPaymentType.DataSource = drPAYMENTTYPE;
@@ -168,7 +169,7 @@ namespace POSActiv8
         public void CancellationTypes()
         {
             //Cancellation Types
-            using (SqlDataReader drCANCELTYPES = sysparamBL.SystemParameters_View(11))
+            using (MySqlDataReader drCANCELTYPES = sysparamBL.SystemParameters_View(11))
             {
                 this.ddlCancellationTypes.Items.Clear();
                 this.ddlCancellationTypes.DataSource = drCANCELTYPES;
@@ -185,7 +186,7 @@ namespace POSActiv8
         public void ImmediateSupervisor()
         {
             //Immediate Supervisor
-            using (SqlDataReader drIMMEDIATESUPERVISOR = userprofBL.UserProfiles_View("1", string.Empty))
+            using (MySqlDataReader drIMMEDIATESUPERVISOR = userprofBL.UserProfiles_View("1", string.Empty))
             {
                 this.ddlImmediateSupervisor.Items.Clear();
                 this.ddlImmediateSupervisor.DataSource = drIMMEDIATESUPERVISOR;
@@ -203,7 +204,7 @@ namespace POSActiv8
             strUserID = Request.QueryString["userid"];
 
             //Order Totals
-            using (SqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
+            using (MySqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
             {
                 if (drORDERTOTALS.Read())
                 {
@@ -274,7 +275,7 @@ namespace POSActiv8
                 document.Add(new Paragraph("\n"));
 
                 //Orders
-                using (SqlDataReader drORDERS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+                using (MySqlDataReader drORDERS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
                 {
                     if (drORDERS.Read())
                     {
@@ -332,7 +333,7 @@ namespace POSActiv8
                         //tblOrderItems.SpacingAfter = 5f;
 
                         //Order Items
-                        using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+                        using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
                         {
                             while (drORDERITEMS.Read())
                             {
@@ -452,7 +453,7 @@ namespace POSActiv8
             this.lblPrintDateTimeReceipt.InnerText = System.DateTime.Now.ToString();
 
             //Order Items
-            using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+            using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
             {
                 if (drORDERITEMS.Read())
                 {
@@ -462,7 +463,7 @@ namespace POSActiv8
             }
 
             //Order Items
-            using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+            using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
             {
                 //this.hfTableCode.Value = strTableCode;
 
@@ -481,7 +482,7 @@ namespace POSActiv8
             }
 
             //Order Totals
-            using (SqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
+            using (MySqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
             {
                 if (drORDERTOTALS.Read())
                 {
@@ -526,7 +527,7 @@ namespace POSActiv8
                 try
                 {
                     //Item Category
-                    using (SqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
+                    using (MySqlDataReader drITEMCATEGORY = itemcatBL.ItemCategory_View(0, string.Empty))
                     {
                         if (drITEMCATEGORY.HasRows)
                         {
@@ -544,7 +545,7 @@ namespace POSActiv8
                     }
 
                     //Item Master
-                    using (SqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", "1"))
+                    using (MySqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", "1"))
                     {
                         if (drITEMMASTER.HasRows)
                         {
@@ -626,7 +627,7 @@ namespace POSActiv8
             try
             {
                 //Item Master
-                using (SqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("0", this.txtSearch.Text.Trim()))
                 {
                     if (drITEMMASTER.HasRows)
                     {
@@ -690,7 +691,7 @@ namespace POSActiv8
                     this.hfTransactionCode.Value = "10";
 
                     //Table Names
-                    using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("1", "0"))
+                    using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("1", "0"))
                     {
                         if (drTABLENAMES.HasRows)
                         {
@@ -838,7 +839,7 @@ namespace POSActiv8
                 this.hfTransactionCode.Value = "30";
 
                 //Table Names
-                using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("2", string.Empty))
+                using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("2", string.Empty))
                 {
                     if (drTABLENAMES.HasRows)
                     {
@@ -919,7 +920,7 @@ namespace POSActiv8
                 this.hfTransactionCode.Value = "40";
 
                 //Table Names
-                using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("2", string.Empty))
+                using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("2", string.Empty))
                 {
                     if (drTABLENAMES.HasRows)
                     {
@@ -1000,7 +1001,7 @@ namespace POSActiv8
                 this.hfTransactionCode.Value = "50";
 
                 //Table Names
-                using (SqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("2", string.Empty))
+                using (MySqlDataReader drTABLENAMES = tblnamesBL.TableNames_View("2", string.Empty))
                 {
                     if (drTABLENAMES.HasRows)
                     {
@@ -1107,7 +1108,7 @@ namespace POSActiv8
                 this.lblXZReportTransactionDate.InnerText = dteTransactionDate.ToString("MMMM dd, yyyy");
                 
                 //XZReport
-                using (SqlDataReader drXZREPORT = posBL.POS_XZReport_View(1, Convert.ToDateTime(dteTransactionDate.ToString("yyyy-MM-dd")), strUserID))
+                using (MySqlDataReader drXZREPORT = posBL.POS_XZReport_View(1, Convert.ToDateTime(dteTransactionDate.ToString("yyyy-MM-dd")), strUserID))
                 {
                     if (drXZREPORT.Read())
                     {
@@ -1242,7 +1243,7 @@ namespace POSActiv8
                 this.lblXZReportTransactionDate.InnerText = dteTransactionDate.ToString("MMMM dd, yyyy");
 
                 //XZReport
-                using (SqlDataReader drXZREPORT = posBL.POS_XZReport_View(2, Convert.ToDateTime(dteTransactionDate.ToString("yyyy-MM-dd")), strUserID))
+                using (MySqlDataReader drXZREPORT = posBL.POS_XZReport_View(2, Convert.ToDateTime(dteTransactionDate.ToString("yyyy-MM-dd")), strUserID))
                 {
                     if (drXZREPORT.Read())
                     {
@@ -1420,7 +1421,7 @@ namespace POSActiv8
                     this.dtItemMaster.Attributes["style"] = "opacity:50%;";
 
                     //Order Items
-                    using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
                     {
                         this.hfTableCode.Value = strTableCode;
 
@@ -1467,7 +1468,7 @@ namespace POSActiv8
                     int intOrderCount = 0;
 
                     //Check order count, if only 1 item do not allow void
-                    using (SqlDataReader drORDERCOUNT = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERCOUNT = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
                     {
                         if (drORDERCOUNT.Read())
                         {
@@ -1497,7 +1498,7 @@ namespace POSActiv8
                         this.dtItemMaster.Attributes["style"] = "opacity:50%;";
 
                         //Order Items
-                        using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
+                        using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
                         {
                             this.hfTableCode.Value = strTableCode;
 
@@ -1555,7 +1556,7 @@ namespace POSActiv8
                     this.dtItemMaster.Attributes["style"] = "opacity:50%;";
 
                     //Order Items
-                    using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(strControlNumber, strTableCode, string.Empty, strUserID))
                     {
                         this.hfTableCode.Value = strTableCode;
 
@@ -1633,7 +1634,7 @@ namespace POSActiv8
                 string strCategoryName = val[1].ToString();
 
                 //Item Master
-                using (SqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("1", strCategoryCode))
+                using (MySqlDataReader drITEMMASTER = itemmastBL.ItemMaster_View("1", strCategoryCode))
                 {
                     if (drITEMMASTER.HasRows)
                     {
@@ -1705,7 +1706,7 @@ namespace POSActiv8
                     string strPost = posBL.POS_Orders_Select(posBO, strUserID);
 
                     //Order Items
-                    using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View("0", this.hfTableCode.Value, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View("0", this.hfTableCode.Value, string.Empty, strUserID))
                     {
                         if (drORDERITEMS.HasRows)
                         {
@@ -1799,7 +1800,7 @@ namespace POSActiv8
 
                     //Display the list again without the deleted record
                     //Order Items
-                    using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View("0", this.hfTableCode.Value, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View("0", this.hfTableCode.Value, string.Empty, strUserID))
                     {
                         if (drORDERITEMS.HasRows)
                         {
@@ -1902,7 +1903,7 @@ namespace POSActiv8
             else
             {
                 //Discount Type
-                using (SqlDataReader drDISCOUNTTYPE = discBL.Discounts_View(Convert.ToInt32(this.ddlDiscountType.SelectedValue), string.Empty))
+                using (MySqlDataReader drDISCOUNTTYPE = discBL.Discounts_View(Convert.ToInt32(this.ddlDiscountType.SelectedValue), string.Empty))
                 {
                     if (drDISCOUNTTYPE.Read())
                     {
@@ -1952,7 +1953,7 @@ namespace POSActiv8
         protected void ddlOrderItemsQuantity_TextChanged(object sender, EventArgs e)
         {
             //Order Items
-            using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View("1", this.hfTableCode.Value, this.ddlOrderItemsQuantity.SelectedValue, String.Empty))
+            using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View("1", this.hfTableCode.Value, this.ddlOrderItemsQuantity.SelectedValue, String.Empty))
             {
                 if (drORDERITEMS.Read())
                 {
@@ -2019,7 +2020,7 @@ namespace POSActiv8
                     ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", "swal('Quantity Saved', '" + this.ddlOrderItemsQuantity.SelectedItem.Text + "' + ' quantity has been saved.', 'success'); ", true);
 
                     //Orders
-                    using (SqlDataReader drORDERS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
                     {
                         //this.hfTableCode.Value = strTableCode;
 
@@ -2042,7 +2043,7 @@ namespace POSActiv8
                     }
 
                     ///Order Totals
-                    using (SqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
+                    using (MySqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
                     {
                         if (drORDERTOTALS.Read())
                         {
@@ -2104,7 +2105,7 @@ namespace POSActiv8
             strUserID = Request.QueryString["userid"];
 
             //Order Totals
-            using (SqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
+            using (MySqlDataReader drORDERTOTALS = posBL.POS_OrdersTotal_View(this.hfControlNumber.Value, strUserID))
             {
                 if (drORDERTOTALS.Read())
                 {
@@ -2329,7 +2330,7 @@ namespace POSActiv8
                         this.dtItemMaster.Attributes["style"] = "opacity:50%;";
 
                         //Order Items
-                        using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+                        using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
                         {
                             this.hfTransactionCode.Value = "30";
 
@@ -2398,7 +2399,7 @@ namespace POSActiv8
                     this.dtItemMaster.Attributes["style"] = "opacity:50%;";
 
                     //Order Items
-                    using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+                    using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
                     {
                         this.hfTransactionCode.Value = "30";
 
@@ -2743,7 +2744,7 @@ namespace POSActiv8
                     var strImmediateSupervisorPassword = baseclass.ComputeHash(this.txtImmediateSupervisorPassword.Value, new MD5CryptoServiceProvider());
 
                     //Check if 
-                    using (SqlDataReader drIMMEDIATESUPERVISOR = userprofBL.UserProfiles_View(this.ddlImmediateSupervisor.SelectedValue, string.Empty))
+                    using (MySqlDataReader drIMMEDIATESUPERVISOR = userprofBL.UserProfiles_View(this.ddlImmediateSupervisor.SelectedValue, string.Empty))
                     {
                         if (drIMMEDIATESUPERVISOR.Read())
                         {
@@ -2787,7 +2788,7 @@ namespace POSActiv8
                                     this.dtItemMaster.Attributes["style"] = "opacity:50%;";
 
                                     //Order Items
-                                    using (SqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
+                                    using (MySqlDataReader drORDERITEMS = posBL.POS_Orders_View(this.hfControlNumber.Value, this.hfTableCode.Value, string.Empty, strUserID))
                                     {
                                         this.hfTransactionCode.Value = "20";
 

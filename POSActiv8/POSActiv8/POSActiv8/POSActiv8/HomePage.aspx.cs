@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -47,7 +48,7 @@ namespace POSActiv8
                 try
                 {
                     //User Profiles
-                    using (SqlDataReader drUSERPROFILES = upBL.UserProfiles_View(strUserID, string.Empty))
+                    using (MySqlDataReader drUSERPROFILES = upBL.UserProfiles_View(strUserID, string.Empty))
                     {
                         if (drUSERPROFILES.Read())
                         {

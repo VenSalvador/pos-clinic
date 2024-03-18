@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessLogic;
 using DataAccess;
@@ -56,7 +57,7 @@ namespace POSActiv8
                     this.txtTransactionDateTo.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
 
                     //Sales Invoice
-                    using (SqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
+                    using (MySqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
                     {
                         this.lblSalesInvoice.Visible = true;
 
@@ -124,7 +125,7 @@ namespace POSActiv8
                 this.lblSalesInvoiceDetailsTitle.InnerText = "Sales Invoice - " + this.hfControlNumber.Value;
 
                 //Sales Invoice
-                using (SqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(2, this.hfControlNumber.Value, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
+                using (MySqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(2, this.hfControlNumber.Value, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
                 {
                     if (drSALESINVOICE.HasRows)
                     {
@@ -142,7 +143,7 @@ namespace POSActiv8
                 }
 
                 //Sales Invoice
-                using (SqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(2, this.hfControlNumber.Value, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
+                using (MySqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(2, this.hfControlNumber.Value, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
                 {
                     if (drSALESINVOICE.Read())
                     {
@@ -219,7 +220,7 @@ namespace POSActiv8
                     using (var package = new ExcelPackage(strSaveSalesInvoice))
                     {
                         //Sales Invoice Header
-                        using (SqlDataReader drEXPORTSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
+                        using (MySqlDataReader drEXPORTSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
                         {
                             //Worksheet
                             ExcelWorksheet worksheetSALESINVOICE = package.Workbook.Worksheets.Add("Header");
@@ -314,7 +315,7 @@ namespace POSActiv8
                         }
 
                         //Sales Invoice Lines
-                        using (SqlDataReader drEXPORTSALESINVOICELINES = posBL.POS_SalesInvoice_View(3, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
+                        using (MySqlDataReader drEXPORTSALESINVOICELINES = posBL.POS_SalesInvoice_View(3, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
                         {
                             //Worksheet
                             ExcelWorksheet worksheetSALESINVOICELINES = package.Workbook.Worksheets.Add("Lines");
@@ -469,7 +470,7 @@ namespace POSActiv8
                     //this.txtTransactionDate.Text = dteTransactionDate.ToString("yyyy-MM-dd");
 
                     //Sales Invoice
-                    using (SqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
+                    using (MySqlDataReader drSALESINVOICE = posBL.POS_SalesInvoice_View(1, string.Empty, Convert.ToDateTime(this.txtTransactionDateFrom.Text), Convert.ToDateTime(this.txtTransactionDateTo.Text)))
                     {
                         this.divSalesInvoice.Visible = true;
                         this.lblSalesInvoice.Visible = true;

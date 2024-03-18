@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -57,7 +58,7 @@ namespace POSActiv8
                 try
                 {
                     //Discounts
-                    using (SqlDataReader drDISCOUNTS = discBL.Discounts_View(0, string.Empty))
+                    using (MySqlDataReader drDISCOUNTS = discBL.Discounts_View(0, string.Empty))
                     {
                         if (drDISCOUNTS.HasRows)
                         {
@@ -121,7 +122,7 @@ namespace POSActiv8
                 this.lblDiscountDetailsTitle.Text = "Discount Details";
 
                 //Discounts
-                using (SqlDataReader drDISCOUNTS = discBL.Discounts_View(intRecordID, string.Empty))
+                using (MySqlDataReader drDISCOUNTS = discBL.Discounts_View(intRecordID, string.Empty))
                 {
                     if (drDISCOUNTS.Read())
                     {
@@ -181,7 +182,7 @@ namespace POSActiv8
             try
             {
                 //Discounts
-                using (SqlDataReader drDISCOUNTS = discBL.Discounts_View(0, this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drDISCOUNTS = discBL.Discounts_View(0, this.txtSearch.Text.Trim()))
                 {
                     if (drDISCOUNTS.HasRows)
                     {

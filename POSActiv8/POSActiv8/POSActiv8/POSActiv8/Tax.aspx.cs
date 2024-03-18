@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -57,7 +58,7 @@ namespace POSActiv8
                 try
                 {
                     //Tax
-                    using (SqlDataReader drTAX = taxBL.Tax_View(0, string.Empty))
+                    using (MySqlDataReader drTAX = taxBL.Tax_View(0, string.Empty))
                     {
                         if (drTAX.HasRows)
                         {
@@ -121,7 +122,7 @@ namespace POSActiv8
                 this.lblTaxDetailsTitle.Text = "Tax Details";
 
                 //Tax
-                using (SqlDataReader drTAX = taxBL.Tax_View(intRecordID, string.Empty))
+                using (MySqlDataReader drTAX = taxBL.Tax_View(intRecordID, string.Empty))
                 {
                     if (drTAX.Read())
                     {
@@ -181,7 +182,7 @@ namespace POSActiv8
             try
             {
                 //Tax
-                using (SqlDataReader drTAX = taxBL.Tax_View(0, this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drTAX = taxBL.Tax_View(0, this.txtSearch.Text.Trim()))
                 {
                     if (drTAX.HasRows)
                     {

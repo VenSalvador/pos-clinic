@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using OfficeOpenXml;
+using MySql.Data.MySqlClient;
 
 using BusinessObject;
 using BusinessLogic;
@@ -72,7 +73,7 @@ namespace POSActiv8
                     dsREGISTER.Clear();
 
                     //Register Shift
-                    using (SqlDataReader drREGISTERSHIFT = regshiftBL.RegisterShift_View("0", string.Empty))
+                    using (MySqlDataReader drREGISTERSHIFT = regshiftBL.RegisterShift_View("0", string.Empty))
                     {
                         if (drREGISTERSHIFT.HasRows)
                         {
@@ -153,7 +154,7 @@ namespace POSActiv8
             try
             {
                 //Register Shift
-                using (SqlDataReader drREGISTERSHIFT = regshiftBL.RegisterShift_View("0", this.txtSearch.Text.Trim()))
+                using (MySqlDataReader drREGISTERSHIFT = regshiftBL.RegisterShift_View("0", this.txtSearch.Text.Trim()))
                 {
                     if (drREGISTERSHIFT.HasRows)
                     {
