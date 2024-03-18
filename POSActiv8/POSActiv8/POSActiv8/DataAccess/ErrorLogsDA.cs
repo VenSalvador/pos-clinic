@@ -39,22 +39,22 @@ namespace DataAccess
         {
             MySqlParameter[] myparams = new MySqlParameter[]
             {
-                new MySqlParameter("@strSourceFile", strSourceFile),
-                new MySqlParameter("@strErrorName", strSectionName),
-                new MySqlParameter("@strErrorDescription", strErrorDescription),
-                new MySqlParameter("@strUserID", strUserID)
+              new MySqlParameter("@strSourceFile", strSourceFile),
+              new MySqlParameter("@strErrorName", strSectionName),
+              new MySqlParameter("@strErrorDescription", strErrorDescription),
+              new MySqlParameter("@strUserID", strUserID)
             };
 
             try
             {
                 return DBHelper.ExecuteNonQueryParam("ErrorLogs_Save", CommandType.StoredProcedure, myparams);
             }
-
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
 
     }
 }
